@@ -87,9 +87,9 @@
           <td>{{$report->report_saduan}}</td>
           <td>{{$report->report_image}}</td>
           <td>
-          <form action ="/maklumbalas/{{$report->report_id}}" method="GET">
-            <button type="submit" class="btn btn-info "><i class="fas fa-edit"> MAKLUMBALAS</i></button>
-          </form>
+            <form action ="/maklumbalas/{{$report->report_id}}" method="GET">
+              <button type="submit" class="btn btn-info "><i class="fas fa-edit"> MAKLUMBALAS</i></button>
+            </form>
           </td>
         </tr>
         @endforeach
