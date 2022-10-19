@@ -27,8 +27,8 @@ class MaklumbalasController extends Controller
         $user = auth()->user();
         $report_id = $request->report_id;
         $data = Maklumbalas::create([
-            'maklumbalas_date'=>$request->maklumbalas_date,
             'maklumbalas_report_id'=> $report_id,
+            'maklumbalas_date'=>$request->maklumbalas_date,
             'maklumbalas_jabatan'=>$request->maklumbalas_jabatan,
             'maklumbalas_catatan'=>$request->maklumbalas_catatan,
         ]);
