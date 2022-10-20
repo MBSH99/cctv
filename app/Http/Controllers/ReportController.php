@@ -8,6 +8,7 @@ use App\Models\Kakitangan;
 use App\Models\Lokasi;
 use App\Models\Maklumbalas;
 use App\Models\Report;
+use App\Models\User;
 use App\Models\Aduan;
 use Illuminate\Http\Request;
 use Auth;
@@ -128,6 +129,7 @@ class ReportController extends Controller
     public function keseluruhanReport(Request $request)
     {
         $user = auth()->user();
+        $data4 = Maklumbalas::all();
         $report_status = "active";
         $search = $request['search'] ?? "";
         if ($search != ""){

@@ -1,28 +1,42 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Lokasi;
+use App\Models\Maklumbalas;
+use App\Models\Report;
+use App\Models\Aduan;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Auth;
+use DB;
+
 
 class UserController extends Controller
 {
     //User view other user register
-    public function viewUser()
+    public function addUser()
+    {
+        $user = auth()->user();
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+    return redirect('/kategori_3/pengguna')->with('success','Pengguna Berjaya Daftar');
+    }
+    //show the data for Kakitangan table
+    public function viewUser(User $user)
     {
         $user = auth()->user();
         $user = User::all();
-        return view('#', ['users' => $user]);
+        return view('/kategori_3/pengguna',['users' => $user]);
     }
-
-    //register user
-    public function RegisterUser(Request $request)
+    //delete the data for Kakitangan table
+    public function deleteUser($id)
     {
-       
+        user::find($id) -> delete();
+        return redirect('/kategori_3/pengguna')->with('success','Berjaya Dihapuskan');
     }
 
-    //Login User
-    public function loginUser(Request $request)
-    {
-
-    }
 }

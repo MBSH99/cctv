@@ -7,6 +7,7 @@ use App\Models\Lokasi;
 use App\Models\Maklumbalas;
 use App\Models\Report;
 use App\Models\Aduan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
 use DB;

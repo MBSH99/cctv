@@ -22,26 +22,22 @@
         <div class="row">
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="kakitangan_no" class="form-label">No Kakitangan </label>
-              <input type="text" class="form-control" id="kakitangan_no" name="kakitangan_no"/>
+              <label for="name" class="form-label">Nama </label>
+              <input type="text" class="form-control" id="name" name="name"/>
             </div>
           </div>
 
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="user_type" class="form-label">Capaian</label>
-              <select id="user_type" name="user_type" class="form-select mb-3" aria-label="Default select example">
-              <option>Sila Pilih</option>
-              <option value="ADMIN">ADMIN</option>
-              <option value="PENGGUNA">PENGGUNA</option>
-              </select>
+              <label for="email" class="form-label">Email</label>
+              <input type="text" class="form-control" id="email" name="email"/>
             </div>
           </div>
         </div>
 
         <div class="mb-3">
-          <label for="kakitangan_name" class="form-label">Nama Penuh</label>
-          <input type="text" class="form-control" id="kakitangan_name" name="kakitangan_name"/>
+          <label for="password" class="form-label">Password</label>
+          <input type="text" class="form-control" id="password" name="password"/>
         </div>
 
       <!-- Card footer -->
@@ -59,21 +55,21 @@
       <thread>
         <tr>
           <th class="col">BIL</th>
-          <th class="col">NO KAKITANGAN</th>
           <th class="col">NAMA</th>
-          <th class="col">JENIS</th>
+          <th class="col">EMAIL</th>
+          <th class="col">PASSWORD</th>
           <th class="col">TINDAKAN</th>
         </tr>
       </thread>
       <tbody>
-      @foreach($kakitangans as $kakitangan)
+      @foreach($users as $user)
         <tr>
           <td>{{$loop->iteration}}</td>
-          <td>{{$kakitangan->kakitangan_no ?? 'Code not Found'}}</td>
-          <td>{{$kakitangan->kakitangan_name ?? 'Detail not Found'}}</td>
-          <td>{{$kakitangan->kakitangan_jenis ?? 'Detail not Found'}}</td>
+          <td>{{$user->name ?? 'Code not Found'}}</td>
+          <td>{{$user->email ?? 'Detail not Found'}}</td>
+          <td>{{$user->password ?? 'Detail not Found'}}</td>
           <td>
-          <form method="get" action="/kategori_3/delete/{{$kakitangan->kakitangan_id}}/"> 
+          <form method="get" action="/kategori_3/delete/{{$user->id}}/"> 
           <button onclick="return confirm('Betul Ingin Padam Data Ini ?')" class="btn btn-danger button-btn" ><i class="fas fa-trash"> DELETE</i></button>
           </form>
 

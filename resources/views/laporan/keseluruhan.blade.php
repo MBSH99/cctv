@@ -59,7 +59,8 @@
           <td>{{$report->report_masa}}</td>
           <td>{{$report->report_laporan}}</td>
           <td>{{$report->report_masalapor}}</td>
-          <td>{{$report->report_saduan}}</td>
+          <td>{{$report->maklumbalas_jabatan}}</td>
+          <td>{{$report->maklumbalas_catatan}}</td>
           <td>{{$report->report_image}}</td>
           <td>
           </td>
