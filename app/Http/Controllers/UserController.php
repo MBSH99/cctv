@@ -22,7 +22,7 @@ class UserController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-
+        save->data();
     return redirect('/kategori_3/pengguna')->with('success','Pengguna Berjaya Daftar');
     }
     //show the data for Kakitangan table
