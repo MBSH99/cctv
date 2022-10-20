@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('maklumbalas_catatan');
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_timestamp'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_timestamp ON UPDATE CURRENT_TIMESTAMP'));
-            $table->foreign('maklumbalas_report_id')->references('report_id')->on('reports')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('maklumbalas_report_id')->references('report_id');
         });
     }
 

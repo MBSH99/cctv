@@ -11,6 +11,7 @@ class Maklumbalas extends Model
     public $primaryKey = 'maklumbalas_id';
 
     protected $fillable = [
+        'maklumbalas_report_id',
         'maklumbalas_date',
         'maklumbalas_jabatan',
         'maklumbalas_catatan',

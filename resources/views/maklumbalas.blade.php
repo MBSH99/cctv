@@ -45,7 +45,7 @@
                     <tr>
                         <th scope="row">TINDAKAN JAWAPAN :</th>
                         <td>
-                        <textarea class="form-control" placeholder="Sila Isikan Jawapan Anda" id="maklumbalas_tindakan" name="maklumbalas_tindakan"  style="height: 100px" rows="2"></textarea>
+                        <textarea class="form-control" placeholder="Sila Isikan Jawapan Anda" id="maklumbalas_jabatan" name="maklumbalas_jabatan"  style="height: 100px" rows="2"></textarea>
                         </td>
                     </tr>
                     <tr>

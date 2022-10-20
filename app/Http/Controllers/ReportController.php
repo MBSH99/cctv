@@ -175,7 +175,7 @@ class ReportController extends Controller
             $file = $request->file('report_image');
             $filename = $file->getClientOriginalName();
             $file->move(public_path("images"), $filename);
-            $Report_image = $filename;
+            $report_image = $filename;
 
             report::find($report_id)->update([
                 'report_tarikh'=>$request->report_tarikh,

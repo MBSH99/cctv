@@ -131,13 +131,9 @@
         <div class="row">
           <div class="mb-3">
             <label for="report_image" class="form-label">Lampiran</label>
-             <input type="file" class="form-control" id="report_image[]" name="report_image[]">
+             <input type="file" class="form-control" id="report_image" name="report_image">
             </div>
         </div>
-        <div class="col-md-12 mb-2">
-                    <img id="imageViewer" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
-                        alt="imageViewer" style="max-height: 250px;">
-                </div>
         <br>
 
         <div class="row">
@@ -164,9 +160,9 @@
 	        fr.onload = function (e) {
 	        	success = fileTypes.indexOf(extension) > -1;
 	        	if(success)
-		        	$(parentEl).append('<img src="' + fr.result + '" class="preview"/>');
+		        //	$(parentEl).append('<img src="' + fr.result + '" class="preview"/>');
                     /*preview image*/
-              var imageViewer = document.getElementById('imageViewer').src = fr.result;
+              //var imageViewer = document.getElementById('imageViewer').src = fr.result;
 	        }
 	        fr.onloadend = function(e){
 	            console.debug("Load End");
