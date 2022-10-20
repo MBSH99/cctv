@@ -22,11 +22,11 @@ class MaklumbalasController extends Controller
         return view('/maklumbalas', compact('report', 'data3'));
     }
 
-    public function addMaklumbalas(Request $request, $report_id)
+    public function addMaklumbalas(Request $request)
     {
         $user = auth()->user();
         $report_id = $request->report_id;
-        $data = Maklumbalas::create([
+        $data = maklumbalas::create([
             'maklumbalas_report_id'=> $report_id,
             'maklumbalas_date'=>$request->maklumbalas_date,
             'maklumbalas_jabatan'=>$request->maklumbalas_jabatan,
@@ -34,7 +34,6 @@ class MaklumbalasController extends Controller
         ]);
         $data->save();
         $maklumbalas_id = $data->maklumbalas_id;
-        $maklumbalas = DB:: select('select * from maklumbalas join reports on maklumbalas.maklumbalas_report_id = reports.report_id where maklumbalas_id=?',[$maklumbalas_id]);
         return redirect('/carian/mengikut_tarikh')->with('success', 'Berjaya Memberi Maklumbalas');
     }
 
