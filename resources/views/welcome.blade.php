@@ -98,7 +98,7 @@
             </span>
         @enderror
 
-          <button class="w-100 btn btn-lg btn-primary" type="submit">Log Masuk</button>
+          <button class="w-100 btn btn-lg btn-primary" type="submit">{{ __('Login') }}</button>
           <hr class="my-4">
           <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
         </form>

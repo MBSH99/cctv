@@ -23,11 +23,18 @@ class UserController extends Controller
     public function registerUser(Request $request)
     {
         $user = auth()->user();
+        $type = $user->user_type;
         $id = $user->id;
+        $user_type = $request->input('user_type');
+        $this->validate($request,[
+            'username' => 'required|unique:users,username,'.$user->user_id,
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'name' => $request->username,
+            'user_type' => $request->user_type,
+            'password' => Hash::make($request->password),
         ]);
         save->data();
     return redirect('/kategori_3/pengguna')->with('success','Pengguna Berjaya Daftar');

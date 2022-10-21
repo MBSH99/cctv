@@ -18,6 +18,7 @@ class LokasiController extends Controller
     public function addLokasi(Request $request)
     {
         $user = auth()->user();
+        $type = $user->user_type;
             $data=lokasi::create([
             'lokasi_kod'=>$request->lokasi_kod,
             'lokasi_detail'=>$request->input('lokasi_detail', '')
@@ -32,6 +33,7 @@ class LokasiController extends Controller
     public function viewLokasi(Lokasi $lokasi)
     {
         $user = auth()->user();
+        $type = $user->user_type;
         $lokasi = Lokasi::all();
         return view('/kategori_2/lokasi',['lokasis' => $lokasi]);
     }
@@ -53,6 +55,7 @@ class LokasiController extends Controller
     public function updateLokasi(Request $request, $lokasi_id)
     {
         $id = Auth::user()->id;
+        $type = $user->user_type;
         lokasi::find($lokasi_id)->update([
             'lokasi_kod'=>$request->lokasi_kod,
             'lokasi_detail'=>$request->lokasi_detail,

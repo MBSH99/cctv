@@ -23,6 +23,7 @@ class ReportController extends Controller
     public function tengokReport()
     {
         $user = auth()->user();
+        $type = $user->user_type;
         $data = Lokasi::all();
         $data1 = Aduan::all();
         return view('/reports/report', compact('data', 'data1'));
@@ -35,6 +36,7 @@ class ReportController extends Controller
     public function addReport(Request $request)
     {
         $user = auth()->user();
+        $type = $user->user_type;
         if($request->hasFile('report_image')){
             $file = $request->file('report_image');
             $filename = $file->getClientOriginalName();
@@ -68,6 +70,7 @@ class ReportController extends Controller
     public function viewReport(Request $request)
     {
         $user = auth()->user();
+        $type = $user->user_type;
         $report_status = "active";
         $search = $request['search'] ?? "";
         if ($search != ""){
@@ -89,6 +92,7 @@ class ReportController extends Controller
     public function showReport(Report $report)
     {
         $user = auth()->user();
+        $type = $user->user_type;
         $search = $request['search'] ?? "";
         $report_status = "active";
         if ($search != ""){
@@ -109,6 +113,7 @@ class ReportController extends Controller
     public function lookReport(Request $request)
     {
         $user = auth()->user();
+        $type = $user->user_type;
         $report_status = "active";
         $search = $request['search'] ?? "";
         if ($search != ""){
@@ -129,6 +134,7 @@ class ReportController extends Controller
     public function keseluruhanReport(Request $request)
     {
         $user = auth()->user();
+        $type = $user->user_type;
         $data4 = Maklumbalas::all();
         $report_status = "active";
         $search = $request['search'] ?? "";
@@ -173,6 +179,7 @@ class ReportController extends Controller
     public function updateReport(Request $request, $report_id)
     {
         $user = auth()->user();
+        $type = $user->user_type;
         if($request->hasFile('report_image')){
             $file = $request->file('report_image');
             $filename = $file->getClientOriginalName();
@@ -220,6 +227,7 @@ class ReportController extends Controller
     public function seeReport(Request $report)
     {
         $user = auth()->user();
+        $type = $user->user_type;
         $report_status = "active";
         $search = $request['search'] ?? "";
         if ($search != ""){
@@ -239,6 +247,7 @@ class ReportController extends Controller
     public function lihatReport(Request $report)
     {
         $user = auth()->user();
+        $type = $user->user_type;
         $report_status = "active";
         $search = $request['search'] ?? "";
         if ($search != ""){
@@ -259,6 +268,7 @@ class ReportController extends Controller
     public function seenReport(Request $report)
     {
         $user = auth()->user();
+        $type = $user->user_type;
         $report_status = "active";
         $search = $request['search'] ?? "";
         if ($search != ""){

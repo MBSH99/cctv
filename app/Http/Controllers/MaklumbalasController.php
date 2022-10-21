@@ -18,6 +18,7 @@ class MaklumbalasController extends Controller
     public function maklumbalasView($report_id)
     {
         $user = auth()->user();
+        $type = $user->user_type;
         $data3 = Report::all();
         $report= report::find($report_id);
         return view('/maklumbalas', compact('report', 'data3'));
@@ -26,6 +27,7 @@ class MaklumbalasController extends Controller
     public function addMaklumbalas(Request $request)
     {
         $user = auth()->user();
+        $type = $user->user_type;
         $report_id = $request->report_id;
         $data = maklumbalas::create([
             'maklumbalas_report_id'=> $report_id,
