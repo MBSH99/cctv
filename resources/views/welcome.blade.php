@@ -56,10 +56,10 @@
         @csrf
           <div class="form-floating mb-3">
 
-            <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-            <label for="floatingInput">{{ __('Email Address') }}</label>
+            <input type="username" id="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+            <label for="floatingInput">{{ __('ID') }}</label>
             
-            @error('email')
+            @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -80,11 +80,23 @@
 
           </div>
 
-          <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me"> {{ __('Remember Me') }}
-            </label>
+          <div class="form-floating mb-3">
+
+        <select name="user_type" id="user_type" class="form-control @error('user_type') is-invalid @enderror" value="{{ old('user_type') }}" required autocomplete="user_type" autofocus>
+        <option value="" disabled selected>Sila Pilih</option>    
+        <option value="0"><lable>Admin</lable></option> 
+        <option value="1"><lable>Pengguna</lable></option>  
+        </select>
+        <label for="floatingInput">{{ __('Pengguna') }}</label>
+        <br><br>
+
           </div>
+
+          @error('user_type')
+            <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+            </span>
+        @enderror
 
           <button class="w-100 btn btn-lg btn-primary" type="submit">Log Masuk</button>
           <hr class="my-4">

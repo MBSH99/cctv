@@ -22,27 +22,34 @@
         <div class="row">
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="name" class="form-label">Nama </label>
-              <input type="text" class="form-control" id="name" name="name"/>
+              <label for="username" class="form-label">Nama </label>
+              <input type="text" class="form-control" id="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">/>
+              @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
             </div>
           </div>
 
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="text" class="form-control" id="email" name="email"/>
+              <label for="password" class="form-label">Email</label>
+              <input type="text" class="form-control" id="password" name="password"/>
             </div>
           </div>
         </div>
 
         <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="text" class="form-control" id="password" name="password"/>
+          <label for="password" class="form-label">Jenis Pengguna</label>
+          <select id="user_type"  class="form-control @error('user_type') is-invalid @enderror" name="user_type" required autocomplete="user_type">   
+            <option value="0"><lable>Admin</lable></option> 
+            <option value="1"><lable>Pengguna</lable></option> 
         </div>
 
       <!-- Card footer -->
       <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">{{ __('REGISTER') }}</button>
       </div>
     </form>
   </div>

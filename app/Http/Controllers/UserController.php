@@ -6,6 +6,12 @@ use App\Models\Maklumbalas;
 use App\Models\Report;
 use App\Models\Aduan;
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
@@ -14,9 +20,10 @@ use DB;
 class UserController extends Controller
 {
     //User view other user register
-    public function addUser()
+    public function registerUser(Request $request)
     {
         $user = auth()->user();
+        $id = $user->id;
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
