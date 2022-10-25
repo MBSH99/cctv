@@ -19,7 +19,6 @@ class MaklumbalasController extends Controller
     {
         $user = auth()->user();
         $type = $user->user_type;
-        $data3 = Report::all();
         $report= report::find($report_id);
         return view('/maklumbalas', compact('report', 'data3'));
     }
@@ -36,6 +35,10 @@ class MaklumbalasController extends Controller
             'maklumbalas_catatan'=>$request->maklumbalas_catatan,
         ]);
         $data->save();
+        
+        $status = 'maklumbalas';
+        Report::find($report_id)->update(['report_status'=>$status]);
+
         $maklumbalas_id = $data->maklumbalas_id;
         return redirect('/carian/mengikut_tarikh')->with('success', 'Berjaya Memberi Maklumbalas');
     }
