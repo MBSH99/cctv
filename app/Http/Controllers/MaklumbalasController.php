@@ -19,6 +19,7 @@ class MaklumbalasController extends Controller
     {
         $user = auth()->user();
         $type = $user->user_type;
+        $data3 = Report::all();
         $report= report::find($report_id);
         return view('/maklumbalas', compact('report', 'data3'));
     }

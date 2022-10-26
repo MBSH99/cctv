@@ -23,7 +23,6 @@ class ReportController extends Controller
     public function tengokReport()
     {
         $user = auth()->user();
-        $type = $user->user_type;
         $data = Lokasi::all();
         $data1 = Aduan::all();
         return view('/reports/report', compact('data', 'data1'));
@@ -36,7 +35,6 @@ class ReportController extends Controller
     public function addReport(Request $request)
     {
         $user = auth()->user();
-        $type = $user->user_type;
         if($request->hasFile('report_image')){
             $file = $request->file('report_image');
             $filename = $file->getClientOriginalName();
@@ -70,7 +68,6 @@ class ReportController extends Controller
     public function viewReport(Request $request)
     {
         $user = auth()->user();
-        $type = $user->user_type;
         $report_status = "active";
         $search = $request['search'] ?? "";
         if ($search != ""){
@@ -92,7 +89,6 @@ class ReportController extends Controller
     public function showReport(Report $report)
     {
         $user = auth()->user();
-        $type = $user->user_type;
         $search = $request['search'] ?? "";
         $report_status = "active";
         if ($search != ""){
@@ -113,7 +109,6 @@ class ReportController extends Controller
     public function lookReport(Request $request)
     {
         $user = auth()->user();
-        $type = $user->user_type;
         $report_status = "active";
         $search = $request['search'] ?? "";
         if ($search != ""){
@@ -134,7 +129,6 @@ class ReportController extends Controller
     public function keseluruhanReport(Request $request)
     {
         $user = auth()->user();
-        $type = $user->user_type;
         $data4 = Maklumbalas::all();
         $report_status = "active";
         $search = $request['search'] ?? "";
@@ -144,9 +138,11 @@ class ReportController extends Controller
 
         } else {
 
-            $report = Report::where('report_status', 'active')->get();
+            $join = DB::select('select * from reports join maklumbalas on reports.report_id = maklumbalas.maklumbalas_report_id');
+            //$report = Report::where('report_status', 'maklumbalas')->get();
+            dd($join);
         }
-        $data = compact('report', 'search');
+        $data = compact('report', 'search', 'join');
         return view('/laporan/keseluruhan')->with($data);
     }
     
@@ -179,7 +175,6 @@ class ReportController extends Controller
     public function updateReport(Request $request, $report_id)
     {
         $user = auth()->user();
-        $type = $user->user_type;
         if($request->hasFile('report_image')){
             $file = $request->file('report_image');
             $filename = $file->getClientOriginalName();
@@ -224,21 +219,10 @@ class ReportController extends Controller
 
 
     //view report for the active report
-    public function seeReport(Request $report)
+    public function seeReport(Request $request)
     {
         $user = auth()->user();
-        $type = $user->user_type;
-        $report_status = "active";
-        $search = $request['search'] ?? "";
-        if ($search != ""){
-
-            $report = Report::whereBetween('created_at', [$request->dateFrom. '00:00:00', $request->dataTo. '23:59:59'])->get();
-
-        } else {
-
-            $report = Report::where('report_status', 'active')->get();
-        }
-        $data = compact('report', 'search');
+        $data = Report::whereBetween('created_at', [$request->dateFrom.'00:00:00',$request->dateTo.'23:59:59'])->get();
         return view('/laporan/belum_diberi_maklumbalas')->with($data);
     }
 
@@ -247,7 +231,6 @@ class ReportController extends Controller
     public function lihatReport(Request $report)
     {
         $user = auth()->user();
-        $type = $user->user_type;
         $report_status = "active";
         $search = $request['search'] ?? "";
         if ($search != ""){
@@ -268,7 +251,6 @@ class ReportController extends Controller
     public function seenReport(Request $report)
     {
         $user = auth()->user();
-        $type = $user->user_type;
         $report_status = "active";
         $search = $request['search'] ?? "";
         if ($search != ""){
