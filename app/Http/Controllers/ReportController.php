@@ -276,6 +276,11 @@ class ReportController extends Controller
         return view('/laporan/tarikh&daerah')->with($data);
     }
 
-
+    public function createPDF() {
+        $join = DB::select('select * from reports join maklumbalas on reports.report_id = maklumbalas.maklumbalas_report_id');
+        view()->share('employee',$join);
+        $pdf = PDF::loadView('/laporan/keseluruhan', compact('join'));
+        return $pdf->download('employee.pdf');
+      }
 
 }
