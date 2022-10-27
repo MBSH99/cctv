@@ -39,8 +39,6 @@ class MaklumbalasController extends Controller
         
         $status = 'maklumbalas';
         Report::find($report_id)->update(['report_status'=>$status]);
-
-        $maklumbalas_id = $data->maklumbalas_id;
         return redirect('/carian/mengikut_tarikh')->with('success', 'Berjaya Memberi Maklumbalas');
     }
 

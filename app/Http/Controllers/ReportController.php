@@ -139,10 +139,10 @@ class ReportController extends Controller
         } else {
 
             $join = DB::select('select * from reports join maklumbalas on reports.report_id = maklumbalas.maklumbalas_report_id');
-            //$report = Report::where('report_status', 'maklumbalas')->get();
-            dd($join);
+                    //where('report_status', 'maklumbalas')->get();
+            
         }
-        $data = compact('report', 'search', 'join');
+        $data = compact('search', 'join');
         return view('/laporan/keseluruhan')->with($data);
     }
     
@@ -222,8 +222,19 @@ class ReportController extends Controller
     public function seeReport(Request $request)
     {
         $user = auth()->user();
-        $data = Report::whereBetween('created_at', [$request->dateFrom.'00:00:00',$request->dateTo.'23:59:59'])->get();
-        return view('/laporan/belum_diberi_maklumbalas')->with($data);
+        $report_status = "active";
+        $search = $request['search'] ?? "";
+        if ($search != ""){
+
+            $report = Report::whereBetween('created_at', [$request->dateFrom. '00:00:00', $request->dataTo. '23:59:59'])->get();
+
+        } else {
+
+            $report = Report::where('report_status', 'active')->get();
+        }
+        $data = compact('report', 'search');
+        
+        return view('/laporan/belum_diberi_maklumbalas', ['reports' => $report]);
     }
 
     
