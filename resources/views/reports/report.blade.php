@@ -131,8 +131,11 @@
         <div class="row">
           <div class="mb-3">
             <label for="report_image" class="form-label">Lampiran</label>
-             <input type="file" class="form-control" id="report_image" name="report_image">
-            </div>
+             <input type="file" class="form-control" id="report_image" name="report_image" onchange="preview()">
+             <br>
+             <br>
+            <img id="frame" src="" class="rounded mx-auto d-block" />
+          </div>
         </div>
         <br>
 
@@ -172,6 +175,15 @@
 	});
 });
 </script>
+<script>
+            function preview() {
+                frame.src = URL.createObjectURL(event.target.files[0]);
+            }
+            function clearImage() {
+                document.getElementById('report_image').value = null;
+                frame.src = "";
+            }
+        </script>
 <br><br><br>
 
 @endsection

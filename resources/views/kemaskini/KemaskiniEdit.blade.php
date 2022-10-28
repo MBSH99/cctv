@@ -11,7 +11,7 @@
 
 <div class="container mt-5">
  
-  <div class="card text-bg-dark bg-gradient bg-opacity-25">
+  <div class="card text-bg-success bg-gradient">
     <form method="post" action="/kemaskini/Kemaskini/edit/{{$report->report_id}}" enctype="multipart/form-data" value="{{$report->report_image}}">
        @csrf
        <!-- Card header -->
@@ -131,7 +131,10 @@
         <div class="row">
           <div class="mb-3">
             <label for="report_image" class="form-label">Lampiran</label>
-             <input type="file" class="form-control" id="report_image" name="report_image" src="/images/{{ $report->report_image }}">
+             <input type="file" class="form-control" id="report_image" name="report_image" src="/images/{{ $report->report_image }}" onchange="preview()">
+             <br>
+             <br>
+            <img id="frame" src="" class="rounded mx-auto d-block" />
             </div>
         </div>
         <br>
@@ -144,6 +147,15 @@
     </form>
   </div>
 </div>
+<script>
+            function preview() {
+                frame.src = URL.createObjectURL(event.target.files[0]);
+            }
+            function clearImage() {
+                document.getElementById('report_image').value = null;
+                frame.src = "";
+            }
+        </script>
 <br><br><br>
 <br><br><br>
 <br><br><br>
