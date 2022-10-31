@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\Aduan;
 use Illuminate\Http\Request;
 use Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 use DB;
 
 class ReportController extends Controller
@@ -278,9 +279,8 @@ class ReportController extends Controller
 
     public function createPDF() {
         $join = DB::select('select * from reports join maklumbalas on reports.report_id = maklumbalas.maklumbalas_report_id');
-        view()->share('employee',$join);
         $pdf = PDF::loadView('/laporan/keseluruhan', compact('join'));
-        return $pdf->download('employee.pdf');
+        return $pdf->download('report.pdf');
       }
 
 }

@@ -69,3 +69,6 @@ Auth::routes();
         Route::get('/kategori_2/lokasi/edit/{lokasi_id}', [App\Http\Controllers\LokasiController::class, 'editLokasi']);
         Route::post('/kategori_2/lokasi/edit/{lokasi_id}', [App\Http\Controllers\LokasiController::class, 'updateLokasi']);
         Route::post('/kategori_2/lokasi/edit/{lokasi_id}', [App\Http\Controllers\LokasiController::class, 'updateLokasi']);
+
+         //ROUTE UNTUK PDF DATA DARI DATABASE
+         Route::get('/laporan/keseluruhan',[App\Http\Controllers\ReportController::class, 'createPDF']);

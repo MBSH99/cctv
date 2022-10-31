@@ -71,10 +71,8 @@
     </div>
   </div>
 </div>
-<div class="card-footer">
-        <button type="submit" class="btn btn-primary">CETAK</button>
+        <button type="submit" href="{{ URL::to('/join/pdf') }}" class="btn btn-primary">CETAK</button>
 </div>
-
 <br><br><br>
 <br><br><br>
 <br><br><br>
