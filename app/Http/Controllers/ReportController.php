@@ -279,6 +279,7 @@ class ReportController extends Controller
 
     public function createPDF() {
         $join = DB::select('select * from reports join maklumbalas on reports.report_id = maklumbalas.maklumbalas_report_id');
+        view()->share('report',$join);
         $pdf = PDF::loadView('/laporan/keseluruhan', compact('join'));
         return $pdf->download('report.pdf');
       }
