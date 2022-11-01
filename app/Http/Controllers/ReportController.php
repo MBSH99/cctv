@@ -94,13 +94,14 @@ class ReportController extends Controller
         $report_status = "active";
         if ($search != ""){
 
-            $report = Report::where('report_kaduan', 'active', "%$search%")->get();
+            $report = DB::select("select * from reports where report_kaduan like = '".$report_kaduan."'")->get();
 
         } else {
 
             $report = Report::where('report_status', 'active')->get();
         }
-        $data = compact('report', 'search');
+        dd($report);
+        //$data = compact('report', 'search');
         return view('/carian/mengikut_kategori')->with($data);
     }
     
@@ -130,7 +131,6 @@ class ReportController extends Controller
     public function keseluruhanReport(Request $request)
     {
         $user = auth()->user();
-        $data4 = Maklumbalas::all();
         $report_status = "active";
         $search = $request['search'] ?? "";
         if ($search != ""){

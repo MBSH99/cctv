@@ -56,10 +56,10 @@
         @csrf
           <div class="form-floating mb-3">
 
-            <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="username" autofocus>
-            <label for="floatingInput">{{ __('EMAIL') }}</label>
+            <input type="username" id="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+            <label for="floatingInput">{{ __('ID') }}</label>
             
-            @error('email')
+            @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
