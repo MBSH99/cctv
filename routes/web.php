@@ -53,6 +53,7 @@ Auth::routes();
         Route::get('/laporan/keseluruhan', [App\Http\Controllers\ReportController::class, 'keseluruhanReport']);
         Route::post('/laporan/belum_diberi_maklumbalas', [App\Http\Controllers\ReportController::class, 'seeReport']);
         Route::get('/laporan/tarikh&daerah',[App\Http\Controllers\ReportController::class, 'lihatReport']);
+        Route::get('/laporan/kes_selesai', [App\Http\Controllers\ReportController::class, 'seenReport']);
 
 
         //ROUTE UNTUK DELETE DATA DARI DATABASE
@@ -70,5 +71,4 @@ Auth::routes();
         Route::post('/kategori_2/lokasi/edit/{lokasi_id}', [App\Http\Controllers\LokasiController::class, 'updateLokasi']);
         Route::post('/kategori_2/lokasi/edit/{lokasi_id}', [App\Http\Controllers\LokasiController::class, 'updateLokasi']);
 
-         //ROUTE UNTUK PDF DATA DARI DATABASE
-         Route::get('/join/pdf',[App\Http\Controllers\ReportController::class, 'createPDF']);
+        

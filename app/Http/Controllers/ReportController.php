@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\View;
 use App\Views\Composers\MultiComposer;
-
 use App\Models\Kakitangan;
 use App\Models\Lokasi;
 use App\Models\Maklumbalas;
@@ -100,8 +99,7 @@ class ReportController extends Controller
 
             $report = Report::where('report_status', 'active')->get();
         }
-        dd($report);
-        //$data = compact('report', 'search');
+        $data = compact('report', 'search');
         return view('/carian/mengikut_kategori')->with($data);
     }
     
@@ -254,34 +252,19 @@ class ReportController extends Controller
 
         } else {
 
-            $report = Report::where('report_status', 'active')->get();
+            $data8 = Report::where('report_status', 'active')->get();
         }
-        $data = compact('report', 'search');
+        $data = compact('data8', 'search');
         return view('/laporan/tarikh&daerah')->with($data);
     }
 
     public function seenReport(Request $report)
     {
         $user = auth()->user();
-        $report_status = "active";
-        $search = $request['search'] ?? "";
-        if ($search != ""){
-
-            $report = Report::whereBetween('created_at', [$request->dateFrom. '00:00:00', $request->dataTo. '23:59:59'])->get();
-
-        } else {
-
-            $report = Report::where('report_status', 'active')->get();
-        }
-        $data = compact('report', 'search');
-        return view('/laporan/tarikh&daerah')->with($data);
+        $report_status = "maklumbalas";
+        $data9 = Report::where('report_status', 'maklumbalas')->get();
+        $data = compact('data9');
+        return view('/laporan/kes_selesai')->with($data);
     }
-
-    public function createPDF() {
-        $join = DB::select('select * from reports join maklumbalas on reports.report_id = maklumbalas.maklumbalas_report_id');
-        view()->share('report',$join);
-        $pdf = PDF::loadView('/laporan/keseluruhan', compact('join'));
-        return $pdf->download('report.pdf');
-      }
 
 }

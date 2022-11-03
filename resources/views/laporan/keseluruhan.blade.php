@@ -45,6 +45,7 @@
         <tr>
           <th class="col">TARIKH</th>
           <th class="col">MASA</th>
+          <th class="col">LOKASI</th>
           <th class="col">LAPORAN KEJADIAN</th>
           <th class="col">MASA DI LAPOR</th>
           <th class="col">TINDAKAN</th>
@@ -57,6 +58,7 @@
         <tr>
           <td>{{$report->report_tarikh}}</td>
           <td>{{$report->report_masa}}</td>
+          <td>{{$report->report_lokasi}}</td>
           <td>{{$report->report_laporan}}</td>
           <td>{{$report->report_masalapor}}</td>
           <td>{{$report->maklumbalas_jabatan}}</td>
@@ -71,8 +73,14 @@
     </div>
   </div>
 </div>
-        <button type="submit" href="{{ URL::to('/join/pdf') }}" class="btn btn-primary">CETAK</button>
+<button class="btn btn-primary"  onclick="window.print()">CETAK</button>
 </div>
+<script>
+  $('.print-window').click(function() {
+    window.print();
+});
+
+</script>
 <br><br><br>
 <br><br><br>
 <br><br><br>
