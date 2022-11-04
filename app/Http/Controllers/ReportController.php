@@ -251,10 +251,11 @@ class ReportController extends Controller
                                 ->get();
 
         } else {
-
-            $data8 = Report::where('report_status', 'active')->get();
+            
+            $join1 = DB::select('select * from reports join maklumbalas on reports.report_id = maklumbalas.maklumbalas_report_id');
+            //$data8 = Report::where('report_status', 'maklumbalas')->get();
         }
-        $data = compact('data8', 'search');
+        $data = compact('join1', 'search');
         return view('/laporan/tarikh&daerah')->with($data);
     }
 

@@ -99,14 +99,15 @@
         </tr>
       </thread>
       <tbody>
-      @foreach ($data8 as $report)
+      @foreach ($join1 as $report)
         <tr>
           <td>{{$report->report_tarikh}}</td>
           <td>{{$report->report_masa}}</td>
           <td>{{$report->report_lokasi}}</td>
           <td>{{$report->report_laporan}}</td>
           <td>{{$report->report_masalapor}}</td>
-          <td>{{$report->report_saduan}}</td>
+          <td>{{$report->maklumbalas_jabatan}}</td>
+          <td>{{$report->maklumbalas_catatan}}</td>
           <td>{{$report->report_image}}</td>
           <td>
           </td>
