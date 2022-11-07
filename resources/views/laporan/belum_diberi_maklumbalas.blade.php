@@ -12,18 +12,18 @@
 
       <!-- Card body -->
       <div class="card-body">
-        <form action="/laporan/belum_diberi_maklumbalas" method="post">
+        <form action="/laporan/belum_diberi_maklumbalas" method="get">
           @csrf
           <div class="row">
             <div class="col-md-6">
               <label for="date" class="form-label">Dari </label>
-              <input type="date" name="search" id="dateFrom" class="form-control"/>
+              <input type="date" name="fromdate" id="fromdate" class="form-control"/>
             </select>
           </div>
 
           <div class="col-md-6">
           <label for="date" class="form-label">Bila </label>
-          <input type="date" name="search" id="dateTo" class="form-control"/>
+          <input type="date" name="todate" id="todate" class="form-control"/>
             </select>
           </div>
         </form>
