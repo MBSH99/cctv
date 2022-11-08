@@ -43,4 +43,15 @@ class LoginController extends Controller
         return 'username';
     }
     
+    protected function authenticated($request, $user)
+    {
+    if($user->user_type == '0') {
+        // change the redirectTo variable as needed
+        $this->redirectTo = ('/');
+    } 
+    else if($user->user_type == '1') {
+        // change the redirectTo variable as needed
+        $this->redirectTo = ('/');
+    }
+    }
 }

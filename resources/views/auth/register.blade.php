@@ -26,6 +26,24 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="user_type" class="col-md-4 col-form-label text-md-end">{{ __('user_type') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="user_type"  class="form-control @error('user_type') is-invalid @enderror" name="user_type" required autocomplete="user_type" style="background-color: none;border: 1px solid black;" >   
+                                    <option value="" disabled selected>Choose type of user</option> 
+                                    <option value="0">Admin<lable></lable></option> 
+                                    <option value="1"><lable>Pengguna</lable></option> 
+                                </select>
+
+                                @error('user_type')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -38,6 +56,8 @@
                                 @enderror
                             </div>
                         </div>
+
+
 
                         <div class="row mb-3">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
