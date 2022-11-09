@@ -60,7 +60,7 @@ Auth::routes();
         Route::get('/kategori_1/delete/{aduan_id}', [App\Http\Controllers\AduanController::class, 'deleteAduan']);
         Route::get('/kategori_2/delete/{lokasi_id}', [App\Http\Controllers\LokasiController::class, 'deleteLokasi']);
         Route::get('/kemaskini/delete/{report_id}', [App\Http\Controllers\ReportController::class, 'deleteReport']);
-        Route::get('/kategori_3/delete/{id}', [App\Http\Controllers\UserController::class, 'deleteKakitangan']);
+        Route::get('/kategori_3/delete/{id}', [App\Http\Controllers\KakitanganController::class, 'deleteKakitangan']);
 
         //ROUTE UNTUK EDIT DATA DARI DATABASE
         Route::get('/kemaskini/Kemaskini/edit/{report_id}', [App\Http\Controllers\ReportController::class, 'editReport']);

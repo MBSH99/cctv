@@ -22,9 +22,9 @@
         <div class="row">
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="username" class="form-label">Nama </label>
-              <input type="text" class="form-control" id="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">/>
-              @error('username')
+              <label for="name" class="form-label">Nama </label>
+              <input type="text" class="form-control" id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">/>
+              @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
