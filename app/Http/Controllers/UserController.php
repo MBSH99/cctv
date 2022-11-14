@@ -16,18 +16,30 @@ use Session;
 class userController extends Controller
 {
     //create new data for Kakitangan table
-    public function addUser(Request $request)
+    protected function validator(array $data)
     {
-        $user = auth()->user();
-        $data=user::create([
-        ''=>$request->,
-        ''=>$request->,
-        ''=>$request->,
-        
-    ]);
-    $data->save();
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
+            'user_type' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
 
-    return redirect('/kategori_3/pengguna')->with('success','Pengguna Berjaya Daftar');
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\Models\User
+     */
+    protected function create(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'username' => $data['username'],
+            'user_type' => $data['user_type'],
+            'password' => Hash::make($data['password']),
+        ]);
     }
     //show the data for Kakitangan table
     public function viewUser(Kakitangan $kakitangan)
