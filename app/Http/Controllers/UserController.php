@@ -38,7 +38,6 @@ class userController extends Controller
         'user_type' => $request->user_type,
         'password' => Hash::make($request->password),
     );
-
     $data10->save();
     return redirect('/kategori_3/pengguna')->with('success','Pengguna Berjaya Daftar');
     }
