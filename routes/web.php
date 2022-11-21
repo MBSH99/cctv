@@ -40,7 +40,7 @@ Auth::routes();
         Route::post('/reports/report', [App\Http\Controllers\ReportController::class, 'addReport']);
         Route::post('/kategori_1/kategori_aduan', [App\Http\Controllers\AduanController::class, 'addAduan']);
         Route::post('/kategori_2/lokasi', [App\Http\Controllers\LokasiController::class, 'addLokasi']);
-        Route::post('/kategori_3/pengguna', [App\Http\Controllers\UserController::class, 'addKakitangan']);
+        Route::post('/kategori_3/pengguna', [App\Http\Controllers\UserController::class, 'registerUser']);
         Route::post('/maklumbalas/{report_id}', [App\Http\Controllers\MaklumbalasController::class, 'addMaklumbalas']);
 
         //ROUTE UNTUK VIEW DATA DARI DATABASE
@@ -49,7 +49,7 @@ Auth::routes();
         Route::get('/carian/mengikut_tarikh', [App\Http\Controllers\ReportController::class, 'lookReport']);
         Route::get('/kategori_1/kategori_aduan', [App\Http\Controllers\AduanController::class, 'viewAduan']);
         Route::get('/kategori_2/lokasi', [App\Http\Controllers\LokasiController::class, 'viewLokasi']);
-        Route::get('/kategori_3/pengguna', [App\Http\Controllers\UserController::class, 'viewKakitangan']);
+        Route::get('/kategori_3/pengguna', [App\Http\Controllers\UserController::class, 'viewUser']);
         Route::get('/laporan/keseluruhan', [App\Http\Controllers\ReportController::class, 'keseluruhanReport']);
         Route::get('/laporan/belum_diberi_maklumbalas', [App\Http\Controllers\ReportController::class, 'seeReport']);
         Route::get('/laporan/tarikh&daerah',[App\Http\Controllers\ReportController::class, 'lihatReport']);
@@ -60,7 +60,7 @@ Auth::routes();
         Route::get('/kategori_1/delete/{aduan_id}', [App\Http\Controllers\AduanController::class, 'deleteAduan']);
         Route::get('/kategori_2/delete/{lokasi_id}', [App\Http\Controllers\LokasiController::class, 'deleteLokasi']);
         Route::get('/kemaskini/delete/{report_id}', [App\Http\Controllers\ReportController::class, 'deleteReport']);
-        Route::get('/kategori_3/delete/{id}', [App\Http\Controllers\KakitanganController::class, 'deleteKakitangan']);
+        Route::get('/kategori_3/delete/{id}', [App\Http\Controllers\UserController::class, 'deleteUser']);
 
         //ROUTE UNTUK EDIT DATA DARI DATABASE
         Route::get('/kemaskini/Kemaskini/edit/{report_id}', [App\Http\Controllers\ReportController::class, 'editReport']);
