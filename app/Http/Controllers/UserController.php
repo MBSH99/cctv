@@ -47,7 +47,7 @@ class userController extends Controller
     {
         $user = auth()->user();
         $user = User::all();
-        return view('/kategori_3/pengguna',['users' => $user]);
+        return view('/kategori_3/pengguna',['users' => $users]);
     }
     //delete the data for Kakitangan table
     public function deleteUser($id)
