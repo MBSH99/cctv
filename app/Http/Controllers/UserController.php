@@ -32,13 +32,13 @@ class userController extends Controller
         'password' => ['required', 'string', 'min:8', 'confirmed'],
     ]);
 
-    $data10=array(
+    $data=array(
         'name' => $request->name,
         'username' => $request->username,
         'user_type' => $request->user_type,
         'password' => Hash::make($request->password),
     );
-    $data10->save();
+    $data->save();
     return redirect('/kategori_3/pengguna')->with('success','Pengguna Berjaya Daftar');
     }
 
@@ -47,7 +47,7 @@ class userController extends Controller
     {
         $user = auth()->user();
         $user = User::all();
-        return view('/kategori_3/pengguna',['users' => $users]);
+        return view('/kategori_3/pengguna',['users' => $user]);
     }
     //delete the data for Kakitangan table
     public function deleteUser($id)
