@@ -52,6 +52,7 @@ Auth::routes();
         Route::get('/kategori_3/pengguna', [App\Http\Controllers\UserController::class, 'viewUser']);
         Route::get('/laporan/keseluruhan', [App\Http\Controllers\ReportController::class, 'keseluruhanReport']);
         Route::get('/laporan/belum_diberi_maklumbalas', [App\Http\Controllers\ReportController::class, 'seeReport']);
+        Route::post('/laporan/belum_diberi_maklumbalas', [App\Http\Controllers\ReportController::class, 'getseeReport']);
         Route::get('/laporan/tarikh&daerah',[App\Http\Controllers\ReportController::class, 'lihatReport']);
         Route::get('/laporan/kes_selesai', [App\Http\Controllers\ReportController::class, 'seenReport']);
 

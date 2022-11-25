@@ -12,7 +12,7 @@
 
       <!-- Card body -->
       <div class="card-body">
-        <form action="/laporan/belum_diberi_maklumbalas" method="get">
+        <form action="/laporan/belum_diberi_maklumbalas" method="post">
           @csrf
           <div class="row">
             <div class="col-md-6">
