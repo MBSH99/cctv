@@ -47,11 +47,11 @@ class LoginController extends Controller
     {
     if($user->user_type == '0') {
         // change the redirectTo variable as needed
-        $this->redirectTo = ('/');
+        $this->redirectTo = ('/home');
     } 
     else if($user->user_type == '1') {
         // change the redirectTo variable as needed
-        $this->redirectTo = ('/');
+        $this->redirectTo = ('/home');
     }
     }
 }

@@ -18,7 +18,7 @@ class AduanController extends Controller
     public function addAduan(Request $request)
     {
           $user = auth()->user();
-          $type = $user->user_type;
+          
             $data=aduan::create([
             'aduan_kod'=>$request->aduan_kod,
             'aduan_detail'=>$request->input('aduan_detail', ''),
@@ -33,7 +33,7 @@ class AduanController extends Controller
     public function viewAduan(Aduan $aduan)
     {
         $user = auth()->user();
-        $type = $user->user_type;
+        
         $aduan = Aduan::all();
         return view('/kategori_1/kategori_aduan',['aduans'=>$aduan]);
         

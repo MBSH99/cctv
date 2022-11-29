@@ -28,31 +28,36 @@ class userController extends Controller
     $this->validate($request,[
         'name' => ['required', 'string', 'max:255'],
         'username' => ['required', 'string', 'max:255', 'unique:users'],
-        'user_type' => ['required', 'string', 'max:255'],
-        'password' => ['required', 'string', 'min:8', 'confirmed'],
+        'user_type' => ['required', 'integer'],
+        'password' => ['required', 'string', 'min:8'],
     ]);
+
+    $current_time = \Carbon\Carbon::now()->toDateTimeString();
 
     $data=array(
         'name' => $request->name,
         'username' => $request->username,
         'user_type' => $request->user_type,
         'password' => Hash::make($request->password),
+        'created_at' =>$current_time,
+        'updated_at' =>$current_time,
+
     );
-    $data->save();
+    User::insert($data);
     return redirect('/kategori_3/pengguna')->with('success','Pengguna Berjaya Daftar');
     }
 
     //show the data for Kakitangan table
     public function viewUser(User $user)
     {
-        $user = auth()->user();
-        $user = User::all();
-        return view('/kategori_3/pengguna',['users' => $user]);
+        $users = auth()->user();
+        $data11 = User::all();
+        return view('/kategori_3/pengguna',compact('data11'));
     }
     //delete the data for Kakitangan table
     public function deleteUser($id)
     {
-        user::find($id) -> delete();
+        User::find($id) -> delete();
         return redirect('/kategori_3/pengguna')->with('success','Berjaya Dihapuskan');
     }
    

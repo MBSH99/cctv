@@ -55,7 +55,7 @@
         </tr>
       </thread>
       <tbody>
-      @foreach ($reports as $report)
+      @foreach ($report as $report)
         <tr>
           <td>{{$report->report_tarikh}}</td>
           <td>{{$report->report_masa}}</td>

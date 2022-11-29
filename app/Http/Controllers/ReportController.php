@@ -221,19 +221,21 @@ class ReportController extends Controller
     public function seeReport(Request $request)
     {
         $user = auth()->user();
-        return view('/laporan/belum_diberi_maklumbalas');
-    }
-
-    public function getseeReport(Request $request)
-    {
-        $user = auth()->user();
         $report_status = "active";
+        $search = $request['search'] ?? "";
+        if ($search != ""){
 
-        $reports = DB::table('reports')
-                  ->whereBetween('report_tarikh', [$request->fromdate, $request->todate])
-                  ->get();
+            $report = Report::whereBetween('created_at', [$request->dateFrom. '00:00:00', $request->dataTo. '23:59:59'])->get();
+
+        } else {
+
+            $report = Report::where('report_status', 'active')->get();
+        }    
+
+        $data = compact('search', 'report');
+        return view('/laporan/belum_diberi_maklumbalas')->with($data);
+
         
-        return view('/laporan/belum_diberi_maklumbalas', compact('reports'));
     }
 
     
