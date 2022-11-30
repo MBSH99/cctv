@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Kakitangan;
 use App\Models\Lokasi;
 use App\Models\Maklumbalas;
 use App\Models\Report;
