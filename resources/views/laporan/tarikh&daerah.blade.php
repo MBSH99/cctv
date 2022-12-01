@@ -17,13 +17,13 @@
           <div class="col-md-6">
             <div class="mb-3">
             <label for="date" class="form-label">Dari </label>
-            <input type="date" id="dateFrom" class="form-control" value="{{$search}}"/>
+            <input type="date" id="dateFrom" class="form-control"/>
             </div>
           </div>
 
           <div class="col-md-6">
           <label for="date" class="form-label">Bila </label>
-          <input type="date" id="dateTo" class="form-control" value="{{$search}}"/>
+          <input type="date" id="dateTo" class="form-control"/>
             </select>
           </div>
         </div>

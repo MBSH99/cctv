@@ -224,7 +224,10 @@ class ReportController extends Controller
         $search = $request['search'] ?? "";
         if ($search != ""){
 
-            $report = Report::whereBetween('report_tarikh', [$request->dateFrom. '00:00:00', $request->dataTo. '23:59:59'])->get();
+            $report = DB::table('reports')->select()
+                                ->where('report_tarikh', '>=', $dateFrom)
+                                ->where('report_tarikh', '<=', $dateTo)
+                                ->get();
 
         } else {
 
@@ -246,7 +249,9 @@ class ReportController extends Controller
         $search = $request['search'] ?? "";
         if ($search != ""){
 
-            $report = Report::whereBetween('report_tarikh', [$request->dateFrom. '00:00:00', $request->dataTo. '23:59:59'])
+            $report = DB::table('reports')->select()
+                                ->where('report_tarikh', '>=', $dateFrom)
+                                ->where('report_tarikh', '<=', $dateTo)
                                 ->where('report_daerah', 'LIKE', "%search%" )
                                 ->where('report_kaduan', 'LIKE', '%search')
                                 ->get();
