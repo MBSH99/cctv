@@ -23,7 +23,7 @@
   </head>
   <body class="bg-warning bg-gradient bg-opacity-95">
 <!-----Header----->
-  <nav class="navbar navbar-expand-lg bg-dark bg-gradient">
+  <nav class="navbar navbar-expand-lg bg-light bg-gradient">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,10 +32,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-4 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link px-2 link-light" aria-current="page" href="/reports/report">Input</a>
+          <a class="nav-link px-2 link-dark" aria-current="page" href="/reports/report">Input</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link px-2 link-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link px-2 link-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Carian
           </a>
           <ul class="dropdown-menu">
@@ -44,10 +44,10 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link px-2 link-light" aria-current="page" href="/kemaskini/Kemaskini">Kemaskini</a>
+          <a class="nav-link px-2 link-dark" aria-current="page" href="/kemaskini/Kemaskini">Kemaskini</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link px-2 link-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link px-2 link-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Laporan
           </a>
           <ul class="dropdown-menu">
@@ -58,7 +58,7 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link px-2 link-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link px-2 link-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Penyelenggaraan
           </a>
           <ul class="dropdown-menu">
@@ -72,18 +72,18 @@
       @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link px-2 link-light" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link px-2 link-dark" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link px-2 link-light" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link px-2 link-dark" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link px-2 link-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link px-2 link-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 

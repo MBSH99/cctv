@@ -16,30 +16,30 @@
       <form action="/carian/mengikut_kategori" method="get">
         <div class="mb-3">
           <label for="report_kaduan" class="form-label">Sila Pilih Kategori</label>
-          <select type="search" id="search" name="search" class="form-select mb-3" aria-label="Default select example" value="{{$search}}">
+          <select type="search" id="search" name="search" class="form-select mb-3" aria-label="Default select example">
                             <option selected>Sila Pilih</option>
-                            <option value="BG01/SISA BINAAN">SISA BINAAN
-                            <option value="BG02/BINAAN(STRUKTUR) TANPA KEBENARAN">BINAAN(STRUKTUR) TANPA KEBENARAN
-                            <option value="D01/PARKING LUAR PETAK">PARKING LUAR PETAK
-                            <option value="D02/SALAHGUNA PETAK OKU">SALAHGUNA PETAK  OKU
-                            <option value="D03/SALAHGUNA PETAK MOTOSIKAL">SALAHGUNA PETAK MOTOSIKAL
-                            <option value="D04/HALANGAN (LALUAN AWAM DAN SIARKAKI)">HALANGAN (LALUAN AWAM DAN SIARKAKI)
-                            <option value="D05/ISU VANDALISME">ISU VANDALISME
-                            <option value="D06/MELANGGAR PEDESTRIAN CROSSING">MELANGGAR PEDESTRIAN CROSSING
-                            <option value="D07 /HALANGAN / PARKING LUAR PETAK (SMART CCTV)">HALANGAN / PARKING LUAR PETAK (SMART CCTV)
-                            <option value="D08/PARKING DI BAHU JALAN">PARKING DI BAHU JALAN
-                            <option value="D09/AKTA PENGANGKUTAN JALAN 1987">AKTA PENGANGKUTAN JALAN 1987
-                            <option value="KJ01/PETAK KUNING/OKU PUDAR">PETAK KUNING/OKU PUDAR
-                            <option value="KJ02/PENUTUP LONGKANG ROSAK/HILANG">PENUTUP LONGKANG ROSAK/HILANG
-                            <option value="KJ03/TEMBOK/TEBING/SIARKAKI ROSAK">TEMBOK/TEBING/SIARKAKI ROSAK
-                            <option value="LE01/PENJAJA">PENJAJA
-                            <option value="LE02/IKLAN BANNER DAN BUNTING">IKLAN "BANNER" DAN "BUNTING"
-                            <option value="LK01/HALANGAN DAHAN POKOK">HALANGAN DAHAN POKOK
-                            <option value="PK01/KAWASAN PEMBIAKAN (VEKTOR)">KAWASAN PEMBIAKAN (VEKTOR)
-                            <option value="PK02/HAIWAN LIAR">HAIWAN LIAR
-                            <option value="PR01/SAMPAH">SAMPAH 
-                            <option value="PR02/LONGKANG TERSUMBAT">LONGKANG TERSUMBAT
-                            <option value="PR03/SAMPAH (SMART CCTV)">SAMPAH (SMART CCTV)
+                            <option value="SISA BINAAN">SISA BINAAN
+                            <option value="BINAAN(STRUKTUR) TANPA KEBENARAN">BINAAN(STRUKTUR) TANPA KEBENARAN
+                            <option value="PARKING LUAR PETAK">PARKING LUAR PETAK
+                            <option value="SALAHGUNA PETAK OKU">SALAHGUNA PETAK  OKU
+                            <option value="SALAHGUNA PETAK MOTOSIKAL">SALAHGUNA PETAK MOTOSIKAL
+                            <option value="HALANGAN (LALUAN AWAM DAN SIARKAKI)">HALANGAN (LALUAN AWAM DAN SIARKAKI)
+                            <option value="ISU VANDALISME">ISU VANDALISME
+                            <option value="MELANGGAR PEDESTRIAN CROSSING">MELANGGAR PEDESTRIAN CROSSING
+                            <option value="HALANGAN / PARKING LUAR PETAK (SMART CCTV)">HALANGAN / PARKING LUAR PETAK (SMART CCTV)
+                            <option value="PARKING DI BAHU JALAN">PARKING DI BAHU JALAN
+                            <option value="AKTA PENGANGKUTAN JALAN 1987">AKTA PENGANGKUTAN JALAN 1987
+                            <option value="PETAK KUNING/OKU PUDAR">PETAK KUNING/OKU PUDAR
+                            <option value="PENUTUP LONGKANG ROSAK/HILANG">PENUTUP LONGKANG ROSAK/HILANG
+                            <option value="TEMBOK/TEBING/SIARKAKI ROSAK">TEMBOK/TEBING/SIARKAKI ROSAK
+                            <option value="PENJAJA">PENJAJA
+                            <option value="IKLAN BANNER DAN BUNTING">IKLAN "BANNER" DAN "BUNTING"
+                            <option value="HALANGAN DAHAN POKOK">HALANGAN DAHAN POKOK
+                            <option value="KAWASAN PEMBIAKAN (VEKTOR)">KAWASAN PEMBIAKAN (VEKTOR)
+                            <option value="HAIWAN LIAR">HAIWAN LIAR
+                            <option value="SAMPAH">SAMPAH 
+                            <option value="LONGKANG TERSUMBAT">LONGKANG TERSUMBAT
+                            <option value="SAMPAH (SMART CCTV)">SAMPAH (SMART CCTV)
                             <option value=""></option>
             </select>
           </form>
