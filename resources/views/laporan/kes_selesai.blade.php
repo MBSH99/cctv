@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="container mt-5">
-  <div class="card text-bg-success bg-gradient ">
+  <div class="card text-bg-light bg-gradient ">
     
       <!-- Card header -->
       <div class="card-header">

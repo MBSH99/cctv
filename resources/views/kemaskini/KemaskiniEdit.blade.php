@@ -11,7 +11,7 @@
 
 <div class="container mt-5">
  
-  <div class="card text-bg-success bg-gradient">
+  <div class="card text-bg-light bg-gradient">
     <form method="post" action="/kemaskini/Kemaskini/edit/{{$report->report_id}}" enctype="multipart/form-data" value="{{$report->report_image}}">
        @csrf
        <!-- Card header -->

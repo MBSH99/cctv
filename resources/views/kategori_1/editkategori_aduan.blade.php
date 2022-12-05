@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="container mt-5">
-  <div class="card text-bg-success bg-gradient">
+  <div class="card text-bg-light bg-gradient">
     <form method="post" action="/kategori_1/kategori_aduan/edit{{$aduan->aduan_id}}" enctype="multipart/form-data">
     @csrf
       <!-- Card header -->

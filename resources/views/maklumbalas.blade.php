@@ -7,7 +7,7 @@
     <div class="card shadow">
         @csrf
         <div class="card-header">
-            <table class="table table-success table-striped">
+            <table class="table table-light table-striped">
                 <thead>
                     @foreach($data3 as $report)
                 <tr>
@@ -36,7 +36,7 @@
             <h2 class="text-centre">MAKLUMBALAS</h2>
             <form method="post" action="/maklumbalas/{{$report->report_id}}" enctype="multipart/form-data">
              @csrf
-            <table class="table table-success table-striped">
+            <table class="table table-light table-striped">
                 <thead>
                     <tr>
                         <th scope="row">TARIKH JAWAB :</th>

@@ -61,91 +61,6 @@ class ReportController extends Controller
         return redirect('/reports/report')->with('success','Laporan Kenyataan Disimpan'); 
     }
 
-
-
-    //view the data for Kemaskini
-    public function viewReport(Request $request)
-    {
-        $user = auth()->user();
-        $report_status = "active";
-        $search = $request['search'] ?? "";
-        if ($search != ""){
-
-            $report = Report::where('report_tarikh', 'LIKE', "%$search%")->get();
-
-        } else {
-
-            $report = Report::where('report_status', 'active')->get();
-        }
-        $data = compact('report', 'search');
-        return view('/kemaskini/Kemaskini')->with($data);
-        
-    }
-
-
-
-    //show the data for Carian mengikut kategori{
-    public function showReport(Report $report)
-    {
-        $user = auth()->user();
-        $search = $request['search'] ?? "";
-        $report_status = "active";
-        if ($search != ""){
-
-            $report = DB::select("select * from reports where report_kaduan like = '".$report_kaduan."'")->get();
-
-        } else {
-
-            $report = Report::where('report_status', 'active')->get();
-        }
-        $data = compact('report', 'search');
-        return view('/carian/mengikut_kategori')->with($data);
-    }
-    
-
-
-    //show the data for Carian mengikut tarikh
-    public function lookReport(Request $request)
-    {
-        $user = auth()->user();
-        $report_status = "active";
-        $search = $request['search'] ?? "";
-        if ($search != ""){
-
-            $report = Report::where('report_tarikh', 'LIKE', "%$search%")->get();
-
-        } else {
-
-            $report = Report::where('report_status', 'active')->get();
-        }
-        $data = compact('report', 'search');
-        return view('/carian/mengikut_tarikh')->with($data);
-    }
-    
-
-
-    //show the data for laporan Keseluruhan
-    public function keseluruhanReport(Request $request)
-    {
-        $user = auth()->user();
-        $report_status = "active";
-        $search = $request['search'] ?? "";
-        if ($search != ""){
-
-            $report = Report::whereBetween('created_at', [$request->dateFrom. '00:00:00', $request->dataTo. '23:59:59'])->get();
-
-        } else {
-
-            $join = DB::select('select * from reports join maklumbalas on reports.report_id = maklumbalas.maklumbalas_report_id');
-                    //where('report_status', 'maklumbalas')->get();
-            
-        }
-        $data = compact('search', 'join');
-        return view('/laporan/keseluruhan')->with($data);
-    }
-    
-
-
     //delete the data on status but not in database for Report
     public function deleteReport($report_id)
     {
@@ -221,21 +136,16 @@ class ReportController extends Controller
     {
         $user = auth()->user();
         $report_status = "active";
-        $search = $request['search'] ?? "";
-        if ($search != ""){
+        $dateFrom = $request->input('dateFrom');
+        $dateTo   = $request->input('dateTo');
 
-            $report = DB::table('reports')->select()
-                                ->where('report_tarikh', '>=', $dateFrom)
-                                ->where('report_tarikh', '<=', $dateTo)
-                                ->get();
-
-        } else {
-
-            $report = Report::where('report_status', 'active')->get();
-        }    
-
-        $data = compact('search', 'report');
-        return view('/laporan/belum_diberi_maklumbalas')->with($data);
+        $query = DB::table('reports')->select()
+                    ->where('report_tarikh', '>=', $dateFrom)
+                    ->where('report_tarikh', '<=', $dateTo)
+                    ->where('report_status', 'active')
+                    ->get();
+        
+        return view('/laporan/belum_diberi_maklumbalas', compact ('query'));
 
         
     }
@@ -274,4 +184,76 @@ class ReportController extends Controller
         return view('/laporan/kes_selesai')->with($data);
     }
 
+
+    //view the data for Kemaskini
+    public function viewReport(Request $request)
+    {
+        $user = auth()->user();
+        $report_status = "active";
+        $data10 = DB::select("SELECT * FROM reports WHERE DATA(report_tarikh) LIKE '".$report_tarikh."'")->get();
+        return view('/kemaskini/Kemaskini', compact('data10'));
+        
+    }
+
+
+
+    //show the data for Carian mengikut kategori{
+    public function showReport(Report $report)
+    {
+        $user = auth()->user();
+        $search = $request['search'] ?? "";
+        $report_status = "active";
+        if ($search != ""){
+
+            $report = DB::select("SELECT * FROM reports WHERE report_kaduan LIKE = '".$report_kaduan."'")->get();
+
+        } else {
+
+            $report = Report::where('report_status', 'active')->get();
+        }
+        $data = compact('report', 'search');
+        return view('/carian/mengikut_kategori')->with($data);
+    }
+    
+
+
+    //show the data for Carian mengikut tarikh
+    public function lookReport(Request $request)
+    {
+        $user = auth()->user();
+        $report_status = "active";
+        $search = $request['search'] ?? "";
+        if ($search != ""){
+
+            $report = Report::where('report_tarikh', 'LIKE', "%$search%")->get();
+
+        } else {
+
+            $report = Report::where('report_status', 'active')->get();
+        }
+        $data = compact('report', 'search');
+        return view('/carian/mengikut_tarikh')->with($data);
+    }
+    
+
+
+    //show the data for laporan Keseluruhan
+    public function keseluruhanReport(Request $request)
+    {
+        $user = auth()->user();
+        $report_status = "active";
+        $search = $request['search'] ?? "";
+        if ($search != ""){
+
+            $report = Report::whereBetween('created_at', [$request->dateFrom. '00:00:00', $request->dataTo. '23:59:59'])->get();
+
+        } else {
+
+            $join = DB::select('select * from reports join maklumbalas on reports.report_id = maklumbalas.maklumbalas_report_id');
+                    //where('report_status', 'maklumbalas')->get();
+            
+        }
+        $data = compact('search', 'join');
+        return view('/laporan/keseluruhan')->with($data);
+    }
 }

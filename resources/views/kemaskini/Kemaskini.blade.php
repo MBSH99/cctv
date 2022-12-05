@@ -21,8 +21,8 @@
       <form action="/kemaskini/Kemaskini" method="get">
       <div class="card-body">
         <div class="mb-3">
-          <label for="date" class="form-label">Sila Masukkan Tarikh</label>
-          <input type="date" name="search" id="search" class="form-control" placeholder="Search by date" value="{{$search}}"/>
+          <label for="report_tarikh" class="form-label">Sila Masukkan Tarikh</label>
+          <input type="date" name="report_tarikh" id="report_tarikh" class="form-control" placeholder="Search by date"/>
         </div>
       </form>
       <!-- Card footer -->
@@ -54,7 +54,7 @@
         </tr>
       </thread>
       <tbody>
-                            @foreach ($report as $report)
+                            @foreach ($data10 as $report)
         <tr>
           <td>{{ $loop->iteration }}</td>
           <td>{{ $report->report_tarikh }}</td>

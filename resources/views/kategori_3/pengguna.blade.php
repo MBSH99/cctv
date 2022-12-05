@@ -9,7 +9,7 @@
         @endif
         
 <div class="container mt-5">
-  <div class="card text-bg-success bg-gradient">
+  <div class="card text-bg-light bg-gradient">
     <form method="post" action="/kategori_3/pengguna" enctype="multipart/form-data">
       @csrf
       <!-- Card header -->

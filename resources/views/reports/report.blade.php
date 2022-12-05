@@ -11,7 +11,7 @@
 
 <div class="container mt-5">
  
-  <div class="card text-bg-success bg-gradient">
+  <div class="card text-bg-light bg-gradient">
     <form method="post" action="/reports/report" enctype="multipart/form-data">
        @csrf
        <!-- Card header -->
