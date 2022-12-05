@@ -23,12 +23,12 @@
     <title>CCTV </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   </head>
-  <body class="bg-warning bg-gradient">
+  <body class="bg-info bg-gradient">
 
-  <div class="container-expand-lg bg-info bg-dark">
+  <div class="container-expand-lg text-black bg-info bg-light">
     <header class="d-flex justify-content-center py-3">
       <ul class="nav nav-pills">
-        <li class="nav-item"><a href="https://www.mbsp.gov.my/index.php/ms/" class="nav-link px-2 link-light">MBSP</a></li>
+        <li class="nav-item"><a href="https://www.mbsp.gov.my/index.php/ms/" class="nav-link px-2 link-dark">MBSP</a></li>
          @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
@@ -52,7 +52,7 @@
         <h1 class="display-4 fw-bold lh-1 mb-3">SISTEM MAKLUMAT CCTV</h1>
       </div>
       <div class="col-md-10 mx-auto col-lg-5">
-        <form class="p-4 p-md-5 border rounded-3 bg-light" method="POST" action="{{ route('login') }}">
+        <form class="p-4 p-md-5 border rounded-3 bg-dark bg-gradient" method="POST" action="{{ route('login') }}">
         @csrf
           <div class="form-floating mb-3">
 
@@ -105,9 +105,9 @@
   </div>
   <br><br>
 
-  <footer class="footer mt-auto py-3 bg-dark bg-gradient">
+  <footer class="footer mt-auto py-3 bg-light bg-gradient">
   <div class="container">
-  <p class="text-center text-muted">&copy; 2022 MAJLIS BANDARAYA SEBERANG PERAI</p>
+  <p class="text-center text-dark text-muted">&copy; 2022 MAJLIS BANDARAYA SEBERANG PERAI</p>
   </div>
 </footer>
   <script src="/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>

@@ -54,7 +54,7 @@
         </tr>
       </thread>
       <tbody>
-                            @foreach ($data10 as $report)
+                            @foreach ($report as $report)
         <tr>
           <td>{{ $loop->iteration }}</td>
           <td>{{ $report->report_tarikh }}</td>

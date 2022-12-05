@@ -190,8 +190,18 @@ class ReportController extends Controller
     {
         $user = auth()->user();
         $report_status = "active";
-        $data10 = DB::select("SELECT * FROM reports WHERE DATA(report_tarikh) LIKE '".$report_tarikh."'")->get();
-        return view('/kemaskini/Kemaskini', compact('data10'));
+        $search = $request['search'] ?? "";
+        $report_status = "active";
+        if ($search != ""){
+
+            $report = DB::select("SELECT * FROM reports WHERE report_kaduan LIKE = '".$report_kaduan."'")->get();
+
+        } else {
+
+            $report = Report::where('report_status', 'active')->get();
+        }
+        $data = compact('report', 'search');
+        return view('/kemaskini/Kemaskini')->with($data);
         
     }
 

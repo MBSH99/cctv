@@ -110,9 +110,9 @@
 </div>
 
   <!---Footer---->
-  <footer class="footer mt-auto py-3 bg-dark bg-gradient">
+  <footer class="footer mt-auto py-3 bg-light bg-gradient">
   <div class="container">
-    <p class="text-center text-muted">&copy; 2022 MAJLIS BANDARAYA SEBERANG PERAI</p>
+    <p class="text-center text-dark text-muted">&copy; 2022 MAJLIS BANDARAYA SEBERANG PERAI</p>
   </div>
 </footer>
 
