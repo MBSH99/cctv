@@ -21,8 +21,8 @@
       <form action="/kemaskini/Kemaskini" method="get">
       <div class="card-body">
         <div class="mb-3">
-          <label for="report_tarikh" class="form-label">Sila Masukkan Tarikh</label>
-          <input type="date" name="report_tarikh" id="report_tarikh" class="form-control" placeholder="Search by date"/>
+          <label for="search" class="form-label">Sila Masukkan Tarikh</label>
+          <input type="date" name="date" id="date" class="form-control" placeholder="Search by date" value="{{$search}}"/>
         </div>
       </form>
       <!-- Card footer -->

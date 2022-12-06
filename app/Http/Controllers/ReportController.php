@@ -145,6 +145,8 @@ class ReportController extends Controller
                     ->where('report_status', 'active')
                     ->get();
         
+                dd($query);
+                
         return view('/laporan/belum_diberi_maklumbalas', compact ('query'));
 
         
