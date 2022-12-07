@@ -22,8 +22,8 @@ class ReportController extends Controller
     public function tengokReport()
     {
         $user = auth()->user();
-        $data = Lokasi::all();
-        $data1 = Aduan::all();
+        $data = Lokasi::where('lokasi_status', 'exist')->get();
+        $data1 = Aduan::where('aduan_status', 'valid')->get();
         return view('/reports/report', compact('data', 'data1'));
 
     }

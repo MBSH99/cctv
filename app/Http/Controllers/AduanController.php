@@ -18,10 +18,12 @@ class AduanController extends Controller
     public function addAduan(Request $request)
     {
           $user = auth()->user();
+          $aduan_status = "valid";
           
             $data=aduan::create([
             'aduan_kod'=>$request->aduan_kod,
             'aduan_detail'=>$request->input('aduan_detail', ''),
+            'aduan_status'=>$aduan_status,
             
         ]);
         $data->save();
@@ -34,14 +36,18 @@ class AduanController extends Controller
     {
         $user = auth()->user();
         
-        $aduan = Aduan::all();
+        $aduan = Aduan::where('aduan_status', 'valid')->get();
         return view('/kategori_1/kategori_aduan',['aduans'=>$aduan]);
         
     }
     //delete the data for aduan
     public function deleteAduan($aduan_id)
     {
-        aduan::find($aduan_id) -> delete();        
+        $aduan_status = "invalid";
+        aduan::find($aduan_id)->update([
+            
+            'aduan_status'=>$aduan_status,
+        ]);        
         return redirect('/kategori_1/kategori_aduan')->with('success','Berjaya Dihapuskan');
     }
     //edit the data for aduan

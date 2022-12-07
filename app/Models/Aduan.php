@@ -13,6 +13,7 @@ class Aduan extends Model
     protected $fillable = [
         'aduan_kod',
         'aduan_detail',
+        'aduan_status',
         
     ];
 }

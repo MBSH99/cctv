@@ -22,8 +22,6 @@ class userController extends Controller
     //Register new user
     public function registerUser(Request $request){
     $user = Auth::user();
-    $type = $user->user_type;
-    $id = $user->id;
     $user_type = $request->input('user_type');
     $this->validate($request,[
         'name' => ['required', 'string', 'max:255'],

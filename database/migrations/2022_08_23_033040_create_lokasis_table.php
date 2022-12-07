@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('lokasi_id');
             $table->string('lokasi_kod')->nullable();
             $table->string('lokasi_detail')->nullable();
+            $table->string('lokasi_status');
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_timestamp'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_timestamp ON UPDATE CURRENT_TIMESTAMP'));
         });

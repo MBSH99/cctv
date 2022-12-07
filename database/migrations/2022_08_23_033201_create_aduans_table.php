@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('aduan_id');
             $table->string('aduan_kod');
             $table->string('aduan_detail')->nullable();
+            $table->string('aduan_status');
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_timestamp'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_timestamp ON UPDATE CURRENT_TIMESTAMP'));
         });

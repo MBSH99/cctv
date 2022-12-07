@@ -16,10 +16,12 @@ class LokasiController extends Controller
     public function addLokasi(Request $request)
     {
         $user = auth()->user();
+        $lokasi_status = "exist";
         
             $data=lokasi::create([
             'lokasi_kod'=>$request->lokasi_kod,
-            'lokasi_detail'=>$request->input('lokasi_detail', '')
+            'lokasi_detail'=>$request->input('lokasi_detail', ''),
+            'lokasi_status'=>$lokasi_status,
             
         ]);
         $data->save();
@@ -32,13 +34,17 @@ class LokasiController extends Controller
     {
         $user = auth()->user();
         
-        $lokasi = Lokasi::all();
+        $lokasi = Lokasi::where('lokasi_status', 'exist')->get();
         return view('/kategori_2/lokasi',['lokasis' => $lokasi]);
     }
     //delete the data for lokasi
     public function deleteLokasi($lokasi_id)
     {
-        lokasi::find($lokasi_id) -> delete();
+        $lokasi_status = "nonexist";
+        lokasi::find($lokasi_id)->update([
+            
+            'lokasi_status'=>$lokasi_status,
+        ]);
         return redirect('/kategori_2/lokasi')->with('success','Berjaya Dihapuskan');
     }
     //edit the data for lokasi
