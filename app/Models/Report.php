@@ -11,6 +11,7 @@ class Report extends Model
     public $primaryKey = 'report_id';
 
     protected $fillable = [
+        'report_admin_id',
         'report_tarikh',
         'report_masa',
         'report_lokasi',

@@ -34,6 +34,7 @@ class ReportController extends Controller
     public function addReport(Request $request)
     {
         $user = auth()->user();
+        $id = Auth::user()->id;
         if($request->hasFile('report_image')){
             $file = $request->file('report_image');
             $filename = $file->getClientOriginalName();
@@ -43,6 +44,7 @@ class ReportController extends Controller
         }
 
         $data=report::create([
+            'report_admin_id'=>$id,
             'report_tarikh'=>$request->report_tarikh,
             'report_masa'=>$request->report_masa,
             'report_lokasi'=>$request->report_lokasi,
@@ -88,6 +90,7 @@ class ReportController extends Controller
     public function updateReport(Request $request, $report_id)
     {
         $user = auth()->user();
+        $id = Auth::user()->id;
         if($request->hasFile('report_image')){
             $file = $request->file('report_image');
             $filename = $file->getClientOriginalName();
@@ -95,6 +98,8 @@ class ReportController extends Controller
             $report_image = $filename;
 
             report::find($report_id)->update([
+                'report_admin_id'=>$id,
+                'report_image'=>$request->report_image,
                 'report_tarikh'=>$request->report_tarikh,
                 'report_masa'=>$request->report_masa,
                 'report_lokasi'=>$request->report_lokasi,
@@ -111,6 +116,8 @@ class ReportController extends Controller
         else{
 
             report::find($report_id)->update([
+                'report_admin_id'=>$id,
+                'report_image'=>$request->report_image,
                 'report_tarikh'=>$request->report_tarikh,
                 'report_masa'=>$request->report_masa,
                 'report_lokasi'=>$request->report_lokasi,
