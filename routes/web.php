@@ -52,9 +52,16 @@ Auth::routes();
         Route::get('/kategori_3/pengguna', [App\Http\Controllers\UserController::class, 'viewUser']);
         Route::get('/laporan/keseluruhan', [App\Http\Controllers\ReportController::class, 'keseluruhanReport']);
         Route::get('/laporan/belum_diberi_maklumbalas', [App\Http\Controllers\ReportController::class, 'seeReport']);
-        Route::post('/laporan/belum_diberi_maklumbalas', [App\Http\Controllers\ReportController::class, 'getseeReport']);
         Route::get('/laporan/tarikh&daerah',[App\Http\Controllers\ReportController::class, 'lihatReport']);
         Route::get('/laporan/kes_selesai', [App\Http\Controllers\ReportController::class, 'seenReport']);
+
+        Route::post('/kemaskini/Kemaskini_result', [App\Http\Controllers\ReportController::class, 'viewReport']);
+        Route::post('/carian/result_kategoti', [App\Http\Controllers\ReportController::class, 'showReport']);
+        Route::post('/carian/result_tarikh', [App\Http\Controllers\ReportController::class, 'lookReport']);
+        Route::post('/laporan/result_keseluruhan', [App\Http\Controllers\ReportController::class, 'keseluruhanReport']);
+        Route::post('/laporan/result_bdm', [App\Http\Controllers\ReportController::class, 'seeReport']);
+        Route::post('/laporan/result_tdka',[App\Http\Controllers\ReportController::class, 'lihatReport']);
+
 
 
         //ROUTE UNTUK DELETE DATA DARI DATABASE
