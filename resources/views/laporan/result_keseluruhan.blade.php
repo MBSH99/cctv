@@ -4,6 +4,7 @@
 @section('content')
 
 <div class="mb-3">
+<a href="/laporan/keseluruhan" class="btn btn-primary pull-right">Kembali</a>
   <div class="card bg-gradient ">
     <div class="card-header">
       <h2>SENARAI KESELURUHAN LAPORAN</h2>
@@ -21,7 +22,7 @@
         </tr>
       </thread>
       <tbody>
-      @foreach ($join as $report)
+      @foreach ($report as $report)
         <tr>
           <td>{{$report->report_tarikh}}</td>
           <td>{{$report->report_masa}}</td>

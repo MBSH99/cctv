@@ -4,6 +4,7 @@
 @section('content')
 
 <div class="mb-3">
+<a href="/carian/mengikut_tarikh" class="btn btn-primary pull-right">Kembali</a>
   <div class="card bg-gradient ">
     <div class="card-header">
       <h2>SENARAI MENGIKUT CARIAN TARIKH</h2>

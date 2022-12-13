@@ -59,7 +59,7 @@ Auth::routes();
         Route::post('/carian/result_kategoti', [App\Http\Controllers\ReportController::class, 'showReport']);
         Route::post('/carian/result_tarikh', [App\Http\Controllers\ReportController::class, 'lookReport']);
         Route::post('/laporan/result_keseluruhan', [App\Http\Controllers\ReportController::class, 'keseluruhanReport']);
-        Route::post('/laporan/result_bdm', [App\Http\Controllers\ReportController::class, 'seeReport']);
+        Route::post('/laporan/result_bdm', [App\Http\Controllers\ReportController::class, 'getseeReport']);
         Route::post('/laporan/result_tdka',[App\Http\Controllers\ReportController::class, 'lihatReport']);
 
 

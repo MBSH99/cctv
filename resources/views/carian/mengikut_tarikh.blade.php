@@ -13,7 +13,7 @@
 
       <!-- Card body -->
       <div class="card-body">
-      <form action="/carian/mengikut_tarikh" method="get">
+      <form action="/carian/mengikut_tarikh" method="post">
       <div class="card-body">
         <div class="mb-3">
           <label for="mengikut_tarikh" class="form-label">Sila Masukkan Tarikh</label>

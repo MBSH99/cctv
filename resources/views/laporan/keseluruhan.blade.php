@@ -12,17 +12,18 @@
 
       <!-- Card body -->
       <div class="card-body">
-        <form action="/laporan/keseluruhan" method="get">
+        <form action="/laporan/keseluruhan" method="post">
+          @csrf
           <div class="row">
             <div class="col-md-6">
               <label for="date" class="form-label">Dari </label>
-              <input type="date" name="search" id="dateFrom" class="form-control"/>
+              <input type="date" name="dateFrom" id="dateFrom" class="form-control"/>
             </select>
           </div>
 
           <div class="col-md-6">
           <label for="date" class="form-label">Bila </label>
-          <input type="date" name="search" id="dateTo" class="form-control"/>
+          <input type="date" name="dateTo" id="dateTo" class="form-control"/>
             </select>
           </div>
         </form>
@@ -30,7 +31,7 @@
 
       <!-- Card footer -->
       <div class="card-footer">
-        <button type="submit" value="Find" class="btn btn-primary">Submit</button>
+        <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
   </div>

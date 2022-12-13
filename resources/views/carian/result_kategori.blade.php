@@ -4,6 +4,7 @@
 @section('content')
 
 <div class="mb-3">
+<a href="/carian/mengikut_kategori" class="btn btn-primary pull-right">Kembali</a>
   <div class="card shadow">
     <div class="card-header">
       <h2>SENARAI MENGIKUT CARIAN KATEGORI</h2>

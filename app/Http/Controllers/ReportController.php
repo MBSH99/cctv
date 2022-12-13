@@ -138,27 +138,147 @@ class ReportController extends Controller
     }
 
 
+
+
     //view report for the active report
     public function seeReport(Request $request)
     {
         $user = auth()->user();
-        $report_status = "active";
-        $dateFrom = $request->input('dateFrom');
-        $dateTo   = $request->input('dateTo');
-
-        $query = DB::table('reports')->select()
-                    ->where('report_tarikh', '>=', $dateFrom)
-                    ->where('report_tarikh', '<=', $dateTo)
-                    ->where('report_status', 'active')
-                    ->get();
-        
-                dd($query);
-                
-        return view('/laporan/belum_diberi_maklumbalas', compact ('query'));
+        return view('/laporan/belum_diberi_maklumbalas');
 
         
     }
 
+    //view report for the active report
+    public function getseeReport(Request $request)
+    {
+        $user = auth()->user();
+        $report_status = "active";
+        $fdate = $request->fdate;
+        $sdate = $request->sdate;
+        $data04 = DB::table('reports')
+                    ->where('report_status', 'active')
+                    ->whereBetween('report_tarikh', [$request->fdate, $request->sdate])
+                    ->get();
+                
+        return view('/laporan/result_bdm', compact ('data04'));
+ 
+    }
+
+    
+
+
+    public function seenReport(Request $request)
+    {
+        $user = auth()->user();
+        $report_status = "maklumbalas";
+        $data9 = Report::where('report_status', 'maklumbalas')->get();
+        $data = compact('data9');
+        return view('/laporan/kes_selesai')->with($data);
+    }
+
+
+
+
+    //view the data for Kemaskini
+    public function viewReport(Request $request)
+    {
+        $user = auth()->user();
+        return view('/kemaskini/Kemaskini');
+        
+    }
+
+    //view the data for Kemaskini
+    public function getviewReport(Request $request)
+    {
+        $user = auth()->user();
+        $ondate = $request->ondate;
+        $report_status = "active";
+        $data03 = DB::table('reports')
+                     ->where('report_status', 'active')
+                     ->where('report_tarikh', [$request->ondate])
+                     ->get();
+
+            return view('/kemaskini/Kemaskini_result', compact('data03'));
+            
+        }
+
+
+
+
+    //show the data for Carian mengikut kategori{
+    public function showReport(Report $report)
+    {
+        $user = auth()->user();
+
+        return view('/carian/mengikut_kategori');
+    }
+
+    //Get the data for carian result kategori{
+     public function getshowReport(Report $report)
+    {
+        $user = auth()->user();
+
+        $fdate = $request->fdate;
+        $sdate = $request->sdate;
+
+
+        $report_status = "active";
+        $data01 = DB::table('reports')
+                        ->where('report_status', 'active')
+                        ->whereBetween('report_kaduan', 'LIKE', "%search%")
+                        ->get();
+
+        return view('/carian/result_kategori', compact('data01'));
+    }
+    
+
+
+
+    //show the data for Carian mengikut tarikh
+    public function lookReport(Request $request)
+    {
+        $user = auth()->user();
+        return view('/carian/mengikut_tarikh');
+    }
+
+    //get the data for carian result_tarikh
+    public function getlookReport(Request $request)
+    {
+        $user = auth()->user();
+        $onedate = $request->onedate;
+        $report_status = "active";
+
+        $data02 = DB::table('reports')
+                        ->where('report_status', 'active')
+                        ->where('report_tarikh', [$request->onedate])
+                        ->get();
+
+        return view('/carian/mengikut_tarikh', compact('data02'));
+    }
+    
+
+
+
+    //show the data for laporan Keseluruhan
+    public function keseluruhanReport(Request $request)
+    {
+        $user = auth()->user();
+        $report_status = "active";
+        $search = $request['search'] ?? "";
+        if ($search != ""){
+
+            $report = Report::whereBetween('created_at', [$request->dateFrom. '00:00:00', $request->dataTo. '23:59:59'])->get();
+
+        } else {
+
+            $join = DB::select('select * from reports join maklumbalas on reports.report_id = maklumbalas.maklumbalas_report_id');
+                    //where('report_status', 'maklumbalas')->get();
+            
+        }
+        $data = compact('search', 'join');
+        return view('/laporan/keseluruhan')->with($data);
+    }
     
     //view report for the active report
     public function lihatReport(Request $report)
@@ -182,97 +302,5 @@ class ReportController extends Controller
         }
         $data = compact('join1', 'search');
         return view('/laporan/tarikh&daerah')->with($data);
-    }
-
-    public function seenReport(Request $report)
-    {
-        $user = auth()->user();
-        $report_status = "maklumbalas";
-        $data9 = Report::where('report_status', 'maklumbalas')->get();
-        $data = compact('data9');
-        return view('/laporan/kes_selesai')->with($data);
-    }
-
-
-    //view the data for Kemaskini
-    public function viewReport(Request $request)
-    {
-        $user = auth()->user();
-        $report_status = "active";
-        $search = $request['search'] ?? "";
-        $report_status = "active";
-        if ($search != ""){
-
-            $report = DB::select("SELECT * FROM reports WHERE report_kaduan LIKE = '".$report_kaduan."'")->get();
-
-        } else {
-
-            $report = Report::where('report_status', 'active')->get();
-        }
-        $data = compact('report', 'search');
-        return view('/kemaskini/Kemaskini')->with($data);
-        
-    }
-
-
-
-    //show the data for Carian mengikut kategori{
-    public function showReport(Report $report)
-    {
-        $user = auth()->user();
-        $search = $request['search'] ?? "";
-        $report_status = "active";
-        if ($search != ""){
-
-            $report = DB::select("SELECT * FROM reports WHERE report_kaduan LIKE = '".$report_kaduan."'")->get();
-
-        } else {
-
-            $report = Report::where('report_status', 'active')->get();
-        }
-        $data = compact('report', 'search');
-        return view('/carian/mengikut_kategori')->with($data);
-    }
-    
-
-
-    //show the data for Carian mengikut tarikh
-    public function lookReport(Request $request)
-    {
-        $user = auth()->user();
-        $report_status = "active";
-        $search = $request['search'] ?? "";
-        if ($search != ""){
-
-            $report = Report::where('report_tarikh', 'LIKE', "%$search%")->get();
-
-        } else {
-
-            $report = Report::where('report_status', 'active')->get();
-        }
-        $data = compact('report', 'search');
-        return view('/carian/mengikut_tarikh')->with($data);
-    }
-    
-
-
-    //show the data for laporan Keseluruhan
-    public function keseluruhanReport(Request $request)
-    {
-        $user = auth()->user();
-        $report_status = "active";
-        $search = $request['search'] ?? "";
-        if ($search != ""){
-
-            $report = Report::whereBetween('created_at', [$request->dateFrom. '00:00:00', $request->dataTo. '23:59:59'])->get();
-
-        } else {
-
-            $join = DB::select('select * from reports join maklumbalas on reports.report_id = maklumbalas.maklumbalas_report_id');
-                    //where('report_status', 'maklumbalas')->get();
-            
-        }
-        $data = compact('search', 'join');
-        return view('/laporan/keseluruhan')->with($data);
-    }
+}
 }
