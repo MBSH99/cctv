@@ -26,7 +26,6 @@
           <input type="date" name="dateTo" id="dateTo" class="form-control"/>
             </select>
           </div>
-        </form>
         </div>
 
       <!-- Card footer -->

@@ -20,18 +20,20 @@
       <!-- Card body -->
       <div class="card-body">
       <form action="/kemaskini/Kemaskini" method="post">
-      <div class="card-body">
-        <div class="mb-3">
-          <label for="mengikut_tarikh" class="form-label">Sila Masukkan Tarikh</label>
-          <input type="date" name="search" id="search" class="form-control" placeholder="Search by date" value="{{$search}}"/>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="mengikut_tarikh" class="form-label">Sila Masukkan Tarikh</label>
+            <input type="date" name="ondate" id="ndate" class="form-control" placeholder="Search by date"/>
+          </div>
         </div>
-      </form>
+      
 
       <!-- Card footer -->
       <div class="card-footer">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
   </div>
+</form>
   </div>
 </div>
 <br><br><br>

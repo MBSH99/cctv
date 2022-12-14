@@ -144,7 +144,8 @@ class ReportController extends Controller
     public function seeReport(Request $request)
     {
         $user = auth()->user();
-        return view('/laporan/belum_diberi_maklumbalas');
+        $join = DB::select('select * from reports join maklumbalas on reports.report_id = maklumbalas.maklumbalas_report_id');
+        return view('/laporan/belum_diberi_maklumbalas', compact('join'));
 
         
     }
@@ -232,10 +233,7 @@ class ReportController extends Controller
         return view('/carian/result_kategori', compact('data01'));
     }
     
-
-
-
-    //show the data for Carian mengikut tarikh
+        //show the data for Carian mengikut tarikh
     public function lookReport(Request $request)
     {
         $user = auth()->user();
@@ -254,7 +252,7 @@ class ReportController extends Controller
                         ->where('report_tarikh', [$request->onedate])
                         ->get();
 
-        return view('/carian/mengikut_tarikh', compact('data02'));
+        return view('/carian/result_tarikh', compact('data02'));
     }
     
 
@@ -263,21 +261,13 @@ class ReportController extends Controller
     //show the data for laporan Keseluruhan
     public function keseluruhanReport(Request $request)
     {
-        $user = auth()->user();
-        $report_status = "active";
-        $search = $request['search'] ?? "";
-        if ($search != ""){
+        $report_status = "maklumbalas";
+        $dateFrom = $request->dateFrom;
+        $dateTo = $request->dateTo;
 
-            $report = Report::whereBetween('created_at', [$request->dateFrom. '00:00:00', $request->dataTo. '23:59:59'])->get();
+        $report = DB::select("SELECT * FROM `reports` JOIN `maklumbalas` on reports.report_id == maklumbalas.maklumbalas_report_id WHERE (report_tarikh >= `".$dateFrom."` and report_tarikh <= `".$dateTo."`)");
 
-        } else {
-
-            $join = DB::select('select * from reports join maklumbalas on reports.report_id = maklumbalas.maklumbalas_report_id');
-                    //where('report_status', 'maklumbalas')->get();
-            
-        }
-        $data = compact('search', 'join');
-        return view('/laporan/keseluruhan')->with($data);
+        return view('/laporan/result_keseluruhan', compact('report'));
     }
     
     //view report for the active report

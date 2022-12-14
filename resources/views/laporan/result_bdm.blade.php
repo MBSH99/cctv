@@ -21,7 +21,7 @@
         </tr>
       </thread>
       <tbody>
-      @foreach ($report as $report)
+      @foreach ($data04 as $report)
         <tr>
           <td>{{$report->report_tarikh}}</td>
           <td>{{$report->report_masa}}</td>

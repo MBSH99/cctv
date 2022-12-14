@@ -13,7 +13,7 @@
       <!-- Card body -->
       <div class="card-body">
         <div class="row">
-        <form action="/laporan/tarikh&daerah" method="get">
+        <form action="/laporan/tarikh&daerah" method="post">
           <div class="col-md-6">
             <div class="mb-3">
             <label for="date" class="form-label">Dari </label>
@@ -69,7 +69,6 @@
             <option value="">/</option>
             </select>
             </div>
-          </form>
         </div>
       <!-- Card footer -->
       <div class="card-footer">

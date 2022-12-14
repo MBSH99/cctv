@@ -2,6 +2,7 @@
 @section('title','CCTV')
 
 @section('content')
+<div class="container mt-5">
 <div class="mb-3">
   <div class="card bg-gradient ">
     <div class="card-header">
@@ -19,7 +20,7 @@
         </tr>
       </thread>
       <tbody>
-      @foreach ($report as $report)
+      @foreach ($join as $report)
         <tr>
           <td>{{$report->report_tarikh}}</td>
           <td>{{$report->report_masa}}</td>

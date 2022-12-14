@@ -44,23 +44,17 @@ Auth::routes();
         Route::post('/maklumbalas/{report_id}', [App\Http\Controllers\MaklumbalasController::class, 'addMaklumbalas']);
 
         //ROUTE UNTUK VIEW DATA DARI DATABASE
-        Route::get('/kemaskini/Kemaskini', [App\Http\Controllers\ReportController::class, 'viewReport']);
-        Route::get('/carian/mengikut_kategori', [App\Http\Controllers\ReportController::class, 'showReport']);
+        Route::post('/kemaskini/Kemaskini', [App\Http\Controllers\ReportController::class, 'viewReport']);
+        Route::post('/carian/mengikut_kategori', [App\Http\Controllers\ReportController::class, 'showReport']);
+        Route::post('/carian/result_tarikh', [App\Http\Controllers\ReportController::class, 'getlookReport']);
         Route::get('/carian/mengikut_tarikh', [App\Http\Controllers\ReportController::class, 'lookReport']);
         Route::get('/kategori_1/kategori_aduan', [App\Http\Controllers\AduanController::class, 'viewAduan']);
         Route::get('/kategori_2/lokasi', [App\Http\Controllers\LokasiController::class, 'viewLokasi']);
         Route::get('/kategori_3/pengguna', [App\Http\Controllers\UserController::class, 'viewUser']);
-        Route::get('/laporan/keseluruhan', [App\Http\Controllers\ReportController::class, 'keseluruhanReport']);
-        Route::get('/laporan/belum_diberi_maklumbalas', [App\Http\Controllers\ReportController::class, 'seeReport']);
-        Route::get('/laporan/tarikh&daerah',[App\Http\Controllers\ReportController::class, 'lihatReport']);
+        Route::post('/laporan/keseluruhan', [App\Http\Controllers\ReportController::class, 'keseluruhanReport']);
+        Route::post('/laporan/belum_diberi_maklumbalas', [App\Http\Controllers\ReportController::class, 'seeReport']);
+        Route::post('/laporan/tarikh&daerah',[App\Http\Controllers\ReportController::class, 'lihatReport']);
         Route::get('/laporan/kes_selesai', [App\Http\Controllers\ReportController::class, 'seenReport']);
-
-        Route::post('/kemaskini/Kemaskini_result', [App\Http\Controllers\ReportController::class, 'viewReport']);
-        Route::post('/carian/result_kategoti', [App\Http\Controllers\ReportController::class, 'showReport']);
-        Route::post('/carian/result_tarikh', [App\Http\Controllers\ReportController::class, 'lookReport']);
-        Route::post('/laporan/result_keseluruhan', [App\Http\Controllers\ReportController::class, 'keseluruhanReport']);
-        Route::post('/laporan/result_bdm', [App\Http\Controllers\ReportController::class, 'getseeReport']);
-        Route::post('/laporan/result_tdka',[App\Http\Controllers\ReportController::class, 'lihatReport']);
 
 
 

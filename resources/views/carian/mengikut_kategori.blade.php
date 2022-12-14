@@ -15,8 +15,8 @@
       <div class="card-body">
       <form action="/carian/mengikut_kategori" method="post">
         <div class="mb-3">
-          <label for="report_kaduan" class="form-label">Sila Pilih Kategori</label>
-          <select type="search" id="report_kaduan" name="report_kaduan" class="form-select mb-3" aria-label="Default select example">
+          <label for="kaduan" class="form-label">Sila Pilih Kategori</label>
+          <select type="search" id="kaduan" name="kaduan" class="form-select mb-3" aria-label="Default select example">
                             <option selected>Sila Pilih</option>
                             <option value="SISA BINAAN">SISA BINAAN
                             <option value="BINAAN(STRUKTUR) TANPA KEBENARAN">BINAAN(STRUKTUR) TANPA KEBENARAN
@@ -42,7 +42,6 @@
                             <option value="SAMPAH (SMART CCTV)">SAMPAH (SMART CCTV)
                             <option value=""></option>
             </select>
-          </form>
         </div>
        
       <!-- Card footer -->
