@@ -20,11 +20,11 @@
       <!-- Card body -->
       <div class="card-body">
       <form action="/kemaskini/Kemaskini" method="post">
-        <div class="card-body">
-          <div class="mb-3">
-            <label for="mengikut_tarikh" class="form-label">Sila Masukkan Tarikh</label>
-            <input type="date" name="ondate" id="ndate" class="form-control" placeholder="Search by date"/>
-          </div>
+      @csrf <!-- {{ csrf_field() }} -->
+      <div class="card-body">
+        <div class="mb-3">
+          <label for="dateFrom." class="form-label">Sila Masukkan Tarikh</label>
+          <input type="date" name="dateFrom" id="dateFrom" class="form-control"/>
         </div>
       
 

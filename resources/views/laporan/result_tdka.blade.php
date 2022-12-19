@@ -3,9 +3,11 @@
 
 @section('content')
 
-
+<div class="container mt-5">
+<a href="/laporan/tarikh&daerah" class="btn btn-primary pull-right">Kembali</a>
 <div class="mb-3">
   <div class="card bg-gradient ">
+
     <div class="card-header">
       <h2>SENARAI LAPORAN MENGIKUT KATEGORI DAN DAERAH</h2>
       <table class="table table-hover" style="text-align:center" >
@@ -22,7 +24,7 @@
         </tr>
       </thread>
       <tbody>
-      @foreach ($join1 as $report)
+      @foreach ($report as $report)
         <tr>
           <td>{{$report->report_tarikh}}</td>
           <td>{{$report->report_masa}}</td>

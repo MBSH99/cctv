@@ -2,7 +2,7 @@
 @section('title','CCTV')
 
 @section('content')
-
+<div class="container mt-5">
 <div class="mb-3">
 <a href="/carian/mengikut_tarikh" class="btn btn-primary pull-right">Kembali</a>
   <div class="card bg-gradient ">
@@ -23,7 +23,7 @@
         </tr>
       </thread>
       <tbody>
-      @foreach ($data02 as $report)
+      @foreach ($report as $report)
         <tr>
         <td>{{$loop->iteration}}</td>
           <td>{{$report->report_tarikh}}</td>

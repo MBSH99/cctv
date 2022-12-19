@@ -10,7 +10,6 @@ use App\Models\User;
 use App\Models\Aduan;
 use Illuminate\Http\Request;
 use Auth;
-use Barryvdh\DomPDF\Facade\Pdf;
 use DB;
 
 class ReportController extends Controller
@@ -140,34 +139,14 @@ class ReportController extends Controller
 
 
 
-    //view report for the active report
+   //view report for the active report
     public function seeReport(Request $request)
     {
         $user = auth()->user();
-        $join = DB::select('select * from reports join maklumbalas on reports.report_id = maklumbalas.maklumbalas_report_id');
-        return view('/laporan/belum_diberi_maklumbalas', compact('join'));
+        $report = Report::where('report_status', 'active')->get();
+        return view('/laporan/belum_diberi_maklumbalas', compact('report'));
 
-        
     }
-
-    //view report for the active report
-    public function getseeReport(Request $request)
-    {
-        $user = auth()->user();
-        $report_status = "active";
-        $fdate = $request->fdate;
-        $sdate = $request->sdate;
-        $data04 = DB::table('reports')
-                    ->where('report_status', 'active')
-                    ->whereBetween('report_tarikh', [$request->fdate, $request->sdate])
-                    ->get();
-                
-        return view('/laporan/result_bdm', compact ('data04'));
- 
-    }
-
-    
-
 
     public function seenReport(Request $request)
     {
@@ -178,119 +157,92 @@ class ReportController extends Controller
         return view('/laporan/kes_selesai')->with($data);
     }
 
-
-
-
     //view the data for Kemaskini
     public function viewReport(Request $request)
     {
-        $user = auth()->user();
-        return view('/kemaskini/Kemaskini');
+        $dateFrom = $request->dateFrom;
+
+        $report = DB::select("SELECT * FROM `reports` WHERE (report_tarikh = '".$dateFrom."' and report_status LIKE '%active%')");
         
-    }
-
-    //view the data for Kemaskini
-    public function getviewReport(Request $request)
-    {
-        $user = auth()->user();
-        $ondate = $request->ondate;
-        $report_status = "active";
-        $data03 = DB::table('reports')
-                     ->where('report_status', 'active')
-                     ->where('report_tarikh', [$request->ondate])
-                     ->get();
-
-            return view('/kemaskini/Kemaskini_result', compact('data03'));
+        if($report == null ){
+            return back()->with('failed','Tiada maklumat direkodkan!');
+        }
+        else{
+            return view('/kemaskini/Kemaskini_result', compact('report'));
+        }
             
         }
 
-
-
-
-    //show the data for Carian mengikut kategori{
-    public function showReport(Report $report)
-    {
-        $user = auth()->user();
-
-        return view('/carian/mengikut_kategori');
-    }
-
     //Get the data for carian result kategori{
-     public function getshowReport(Report $report)
+     public function showReport(Request $request)
     {
-        $user = auth()->user();
+        $report_kaduan = $request->report_kaduan;
 
-        $fdate = $request->fdate;
-        $sdate = $request->sdate;
-
-
-        $report_status = "active";
-        $data01 = DB::table('reports')
-                        ->where('report_status', 'active')
-                        ->whereBetween('report_kaduan', 'LIKE', "%search%")
-                        ->get();
-
-        return view('/carian/result_kategori', compact('data01'));
-    }
-    
-        //show the data for Carian mengikut tarikh
-    public function lookReport(Request $request)
-    {
-        $user = auth()->user();
-        return view('/carian/mengikut_tarikh');
+        $report = DB::select("SELECT * FROM `reports` WHERE (report_kaduan = '".$report_kaduan."' and report_status LIKE '%active%')");
+        
+        if($report == null ){
+            return back()->with('failed','Tiada maklumat direkodkan!');
+        }
+        else{
+            return view('/carian/result_kategori', compact('report'));
+        }
     }
 
     //get the data for carian result_tarikh
-    public function getlookReport(Request $request)
+    public function lookReport(Request $request)
     {
-        $user = auth()->user();
-        $onedate = $request->onedate;
-        $report_status = "active";
+        
+        $dateFrom = $request->dateFrom;
 
-        $data02 = DB::table('reports')
-                        ->where('report_status', 'active')
-                        ->where('report_tarikh', [$request->onedate])
-                        ->get();
-
-        return view('/carian/result_tarikh', compact('data02'));
+        $report = DB::select("SELECT * FROM `reports` WHERE (report_tarikh = '".$dateFrom."' and report_status LIKE '%active%')");
+        
+        if($report == null ){
+            return back()->with('failed','Tiada maklumat direkodkan!');
+        }
+        else{
+            return view('/carian/result_tarikh', compact('report'));
+        }
     }
     
-
-
 
     //show the data for laporan Keseluruhan
     public function keseluruhanReport(Request $request)
     {
-        $report_status = "maklumbalas";
+       
         $dateFrom = $request->dateFrom;
         $dateTo = $request->dateTo;
-
-        $report = DB::select("SELECT * FROM `reports` JOIN `maklumbalas` on reports.report_id == maklumbalas.maklumbalas_report_id WHERE (report_tarikh >= `".$dateFrom."` and report_tarikh <= `".$dateTo."`)");
-
-        return view('/laporan/result_keseluruhan', compact('report'));
+       // $report = DB::select("SELECT * FROM `reports` WHERE (report_tarikh >= '".$dateFrom."' and report_tarikh <= '".$dateTo."')");
+        
+       // ni kalau nk  join ngan maklumbalas 
+        $report = DB::select("SELECT * FROM `reports` JOIN `maklumbalas` on reports.report_id = maklumbalas.maklumbalas_report_id WHERE (report_tarikh >= '".$dateFrom."' and report_tarikh <= '".$dateTo."' and report_status LIKE '%maklumbalas%')");
+        
+        if($report == null ){
+            return back()->with('failed','Tiada maklumat direkodkan!');
+        }
+        else{
+            return view('/laporan/result_keseluruhan', compact('report'));
+        }
+    
+        
     }
     
     //view report for the active report
-    public function lihatReport(Request $report)
+    public function lihatReport(Request $request)
     {
-        $user = auth()->user();
-        $report_status = "active";
-        $search = $request['search'] ?? "";
-        if ($search != ""){
-
-            $report = DB::table('reports')->select()
-                                ->where('report_tarikh', '>=', $dateFrom)
-                                ->where('report_tarikh', '<=', $dateTo)
-                                ->where('report_daerah', 'LIKE', "%search%" )
-                                ->where('report_kaduan', 'LIKE', '%search')
-                                ->get();
-
-        } else {
-            
-            $join1 = DB::select('select * from reports join maklumbalas on reports.report_id = maklumbalas.maklumbalas_report_id');
-            //$data8 = Report::where('report_status', 'maklumbalas')->get();
+        $dateFrom = $request->dateFrom;
+        $dateTo = $request->dateTo;
+        $report_daerah = $request->report_daerah;
+        $report_kaduan = $request->report_kaduan;
+       // $report = DB::select("SELECT * FROM `reports` WHERE (report_tarikh >= '".$dateFrom."' and report_tarikh <= '".$dateTo."')");
+        
+       // ni kalau nk  join ngan maklumbalas 
+        $report = DB::select("SELECT * FROM `reports` JOIN `maklumbalas` on reports.report_id = maklumbalas.maklumbalas_report_id WHERE (report_tarikh >= '".$dateFrom."' and report_tarikh <= '".$dateTo."' and report_daerah LIKE '".$report_daerah."' and report_kaduan LIKE '".$report_kaduan."' and report_status LIKE '%maklumbalas%')");
+        
+        if($report == null ){
+            return back()->with('failed','Tiada maklumat direkodkan!');
         }
-        $data = compact('join1', 'search');
-        return view('/laporan/tarikh&daerah')->with($data);
+        else{
+            return view('/laporan/result_tdka', compact('report'));
+        }
 }
 }

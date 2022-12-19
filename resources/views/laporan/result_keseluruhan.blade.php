@@ -3,7 +3,9 @@
 
 @section('content')
 
+<div class="container mt-5">
 <div class="mb-3">
+<br>
 <a href="/laporan/keseluruhan" class="btn btn-primary pull-right">Kembali</a>
   <div class="card bg-gradient ">
     <div class="card-header">

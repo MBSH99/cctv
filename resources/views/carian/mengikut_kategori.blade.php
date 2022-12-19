@@ -5,7 +5,6 @@
 
 <div class="container mt-5">
   <div class="card text-bg-light bg-gradient">
-    <form>
       <!-- Card header -->
       <div class="card-header">
         <h4 class="fw-bold">Carian Mengikut Kategori Aduan</h4>
@@ -14,9 +13,10 @@
       <!-- Card body -->
       <div class="card-body">
       <form action="/carian/mengikut_kategori" method="post">
+      @csrf <!-- {{ csrf_field() }} -->
         <div class="mb-3">
-          <label for="kaduan" class="form-label">Sila Pilih Kategori</label>
-          <select type="search" id="kaduan" name="kaduan" class="form-select mb-3" aria-label="Default select example">
+          <label for="report_kaduan" class="form-label">Sila Pilih Kategori</label>
+          <select type="search" id="report_kaduan" name="report_kaduan" class="form-select mb-3" aria-label="Default select example">
                             <option selected>Sila Pilih</option>
                             <option value="SISA BINAAN">SISA BINAAN
                             <option value="BINAAN(STRUKTUR) TANPA KEBENARAN">BINAAN(STRUKTUR) TANPA KEBENARAN
@@ -47,9 +47,6 @@
       <!-- Card footer -->
       <div class="card-footer">
         <button type="submit" class="btn btn-primary">Submit</button>
-        <a href="{{url('/carian/mengikut_kategori')}}">
-          <button class="btn btn-primary" type="button">Reset</button>
-        </a>
       </div>
     </form>
   </div>

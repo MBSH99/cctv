@@ -9,11 +9,16 @@
         </div>
         @endif
 
+<div class="container mt-5">
+<br>
+<a href="/kemaskini/Kemaskini" class="btn btn-primary pull-right">Kembali</a>
+<br>
 <div class="mb-3">
+
   <div class="card shadow">
     <div class="card-header">
       <h2>SENARAI LAPORAN</h2>
-      @csrf
+      
       <table class="table table-hover" style="text-align:center" >
       <thread>
         <tr>
