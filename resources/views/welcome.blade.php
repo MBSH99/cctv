@@ -80,22 +80,7 @@
 
           </div>
 
-          <div class="form-floating mb-3">
 
-            <select id="user_type"  class="form-control @error('user_type') is-invalid @enderror" name="user_type" required autocomplete="user_type" style="background-color: none;border: 1px solid black;" >   
-                                    <option value="" disabled selected>Choose type of user</option> 
-                                    <option value="0">Admin<lable></lable></option> 
-                                    <option value="1"><lable>Pengguna</lable></option> 
-                                </select>
-            <label for="floatingInput">{{ __('Roles') }}</label>
-            
-            @error('user_type')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-
-          </div>
           <button class="w-100 btn btn-lg btn-primary" type="submit">{{ __('Login') }}</button>
           <hr class="my-4">
           <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>

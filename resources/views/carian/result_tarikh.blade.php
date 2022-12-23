@@ -8,6 +8,7 @@
   <div class="card bg-gradient ">
     <div class="card-header">
       <h2>SENARAI MENGIKUT CARIAN TARIKH</h2>
+      <h4>Koleksi Data Pada Tarikh ({{$dateFrom}})</h4>
       <table class="table table-hover" style="text-align:center" >
       <thread>
         <tr>

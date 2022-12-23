@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Aduan;
 use Illuminate\Http\Request;
 use Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 use DB;
 
 class ReportController extends Controller
@@ -34,6 +35,20 @@ class ReportController extends Controller
     {
         $user = auth()->user();
         $id = Auth::user()->id;
+        
+        $this->validate($request,[
+            'report_tarikh' => ['required'],
+            'report_masa' => ['required'],
+            'report_lokasi' => ['required'],
+            'report_daerah' => ['required'],
+            'report_kaduan' => ['required'],
+            'report_saduan' => ['required'],
+            'report_jabatan' => ['required'],
+            'report_masalapor' => ['required'],
+            'report_laporan' => ['required'],
+            'report_image' => ['required'],
+        ]);
+
         if($request->hasFile('report_image')){
             $file = $request->file('report_image');
             $filename = $file->getClientOriginalName();
@@ -90,6 +105,20 @@ class ReportController extends Controller
     {
         $user = auth()->user();
         $id = Auth::user()->id;
+        
+        $this->validate($request,[
+            'report_tarikh' => ['required'],
+            'report_masa' => ['required'],
+            'report_lokasi' => ['required'],
+            'report_daerah' => ['required'],
+            'report_kaduan' => ['required'],
+            'report_saduan' => ['required'],
+            'report_jabatan' => ['required'],
+            'report_masalapor' => ['required'],
+            'report_laporan' => ['required'],
+            'report_image' => ['required'],
+        ]);
+
         if($request->hasFile('report_image')){
             $file = $request->file('report_image');
             $filename = $file->getClientOriginalName();
@@ -139,11 +168,13 @@ class ReportController extends Controller
 
 
 
-   //view report for the active report
+    //view report for the active report
     public function seeReport(Request $request)
     {
         $user = auth()->user();
-        $report = Report::where('report_status', 'active')->get();
+        $report = Report::where('report_status', 'active')
+                         ->orderBy(column: 'report_tarikh')
+                         ->get();
         return view('/laporan/belum_diberi_maklumbalas', compact('report'));
 
     }
@@ -152,7 +183,9 @@ class ReportController extends Controller
     {
         $user = auth()->user();
         $report_status = "maklumbalas";
-        $data9 = Report::where('report_status', 'maklumbalas')->get();
+        $data9 = Report::where('report_status', 'maklumbalas')
+                        ->orderBy(column: 'report_tarikh')
+                        ->get();
         $data = compact('data9');
         return view('/laporan/kes_selesai')->with($data);
     }
@@ -162,13 +195,13 @@ class ReportController extends Controller
     {
         $dateFrom = $request->dateFrom;
 
-        $report = DB::select("SELECT * FROM `reports` WHERE (report_tarikh = '".$dateFrom."' and report_status LIKE '%active%')");
+        $report = DB::select("SELECT * FROM `reports` WHERE (report_tarikh = '".$dateFrom."' and report_status = 'active') ");
         
         if($report == null ){
             return back()->with('failed','Tiada maklumat direkodkan!');
         }
         else{
-            return view('/kemaskini/Kemaskini_result', compact('report'));
+            return view('/kemaskini/Kemaskini_result', compact('report', 'dateFrom'));
         }
             
         }
@@ -178,13 +211,13 @@ class ReportController extends Controller
     {
         $report_kaduan = $request->report_kaduan;
 
-        $report = DB::select("SELECT * FROM `reports` WHERE (report_kaduan = '".$report_kaduan."' and report_status LIKE '%active%')");
+        $report = DB::select("SELECT * FROM `reports` WHERE (report_kaduan = '".$report_kaduan."' and report_status = 'active')");
         
         if($report == null ){
-            return back()->with('failed','Tiada maklumat direkodkan!');
+            return back()->with('failed','Tiada maklumat direkodkan! Sila CUba Lagi');
         }
         else{
-            return view('/carian/result_kategori', compact('report'));
+            return view('/carian/result_kategori', compact('report', 'report_kaduan'));
         }
     }
 
@@ -194,13 +227,13 @@ class ReportController extends Controller
         
         $dateFrom = $request->dateFrom;
 
-        $report = DB::select("SELECT * FROM `reports` WHERE (report_tarikh = '".$dateFrom."' and report_status LIKE '%active%')");
+        $report = DB::select("SELECT * FROM `reports` WHERE (report_tarikh = '".$dateFrom."' and report_status = 'active')");
         
         if($report == null ){
-            return back()->with('failed','Tiada maklumat direkodkan!');
+            return back()->with('failed','Tiada maklumat direkodkan! Sila CUba Lagi');
         }
         else{
-            return view('/carian/result_tarikh', compact('report'));
+            return view('/carian/result_tarikh', compact('report', 'dateFrom'));
         }
     }
     
@@ -214,13 +247,13 @@ class ReportController extends Controller
        // $report = DB::select("SELECT * FROM `reports` WHERE (report_tarikh >= '".$dateFrom."' and report_tarikh <= '".$dateTo."')");
         
        // ni kalau nk  join ngan maklumbalas 
-        $report = DB::select("SELECT * FROM `reports` JOIN `maklumbalas` on reports.report_id = maklumbalas.maklumbalas_report_id WHERE (report_tarikh >= '".$dateFrom."' and report_tarikh <= '".$dateTo."' and report_status LIKE '%maklumbalas%')");
+        $report = DB::select("SELECT * FROM `reports` JOIN `maklumbalas` on reports.report_id = maklumbalas.maklumbalas_report_id WHERE (report_tarikh >= '".$dateFrom."' and report_tarikh <= '".$dateTo."' and report_status = 'maklumbalas') ORDER BY `report_tarikh` DESC");
         
         if($report == null ){
-            return back()->with('failed','Tiada maklumat direkodkan!');
+            return back()->with('failed','Tiada maklumat direkodkan! Sila CUba Lagi');
         }
         else{
-            return view('/laporan/result_keseluruhan', compact('report'));
+            return view('/laporan/result_keseluruhan', compact('report', 'dateFrom', 'dateTo'));
         }
     
         
@@ -236,13 +269,13 @@ class ReportController extends Controller
        // $report = DB::select("SELECT * FROM `reports` WHERE (report_tarikh >= '".$dateFrom."' and report_tarikh <= '".$dateTo."')");
         
        // ni kalau nk  join ngan maklumbalas 
-        $report = DB::select("SELECT * FROM `reports` JOIN `maklumbalas` on reports.report_id = maklumbalas.maklumbalas_report_id WHERE (report_tarikh >= '".$dateFrom."' and report_tarikh <= '".$dateTo."' and report_daerah LIKE '".$report_daerah."' and report_kaduan LIKE '".$report_kaduan."' and report_status LIKE '%maklumbalas%')");
+        $report = DB::select("SELECT * FROM `reports` JOIN `maklumbalas` on reports.report_id = maklumbalas.maklumbalas_report_id WHERE (report_tarikh >= '".$dateFrom."' and report_tarikh <= '".$dateTo."' and report_daerah LIKE '".$report_daerah."' and report_kaduan LIKE '".$report_kaduan."' and report_status = 'maklumbalas') ORDER BY `report_tarikh` DESC");
         
         if($report == null ){
-            return back()->with('failed','Tiada maklumat direkodkan!');
+            return back()->with('failed','Tiada maklumat direkodkan! Sila CUba Lagi');
         }
         else{
-            return view('/laporan/result_tdka', compact('report'));
+            return view('/laporan/result_tdka', compact('report', 'dateFrom', 'dateTo', 'report_daerah', 'report_kaduan'));
         }
 }
 }

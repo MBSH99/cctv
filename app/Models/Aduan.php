@@ -14,6 +14,5 @@ class Aduan extends Model
         'aduan_kod',
         'aduan_detail',
         'aduan_status',
-        
     ];
 }

@@ -9,7 +9,8 @@
 <a href="/laporan/keseluruhan" class="btn btn-primary pull-right">Kembali</a>
   <div class="card bg-gradient ">
     <div class="card-header">
-      <h2>SENARAI KESELURUHAN LAPORAN</h2>
+      <h2>SENARAI KESELURUHAN LAPORAN </h2>
+      <h4>Koleksi Data Dari Tarikh ({{$dateFrom}}) Sehingga ({{$dateTo}})</h4>
       <table class="table table-hover" style="text-align:center" >
       <thread>
         <tr>
@@ -51,13 +52,6 @@
 });
 
 </script>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
 <br><br><br>
 <br><br><br>
 @endsection

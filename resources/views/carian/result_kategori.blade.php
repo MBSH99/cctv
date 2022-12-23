@@ -2,12 +2,13 @@
 @section('title','CCTV')
 
 @section('content')
-
+<div class="container mt-5">
 <div class="mb-3">
 <a href="/carian/mengikut_kategori" class="btn btn-primary pull-right">Kembali</a>
   <div class="card shadow">
     <div class="card-header">
       <h2>SENARAI MENGIKUT CARIAN KATEGORI</h2>
+      <h4>Koleksi Data Pada Kategori ({{$report_kaduan}})</h4>
       <table class="table table-hover" style="text-align:center" >
       <thread>
         <tr>

@@ -17,17 +17,27 @@
           <div class="col-md-6">
             <div class="mb-3">
               <label for="aduan_kod" class="form-label">Kod</label>
-              <input type="text" class="form-control" id="aduan_kod" name="aduan_kod"  value="{{$aduan->aduan_kod}}"/>
+              <input type="text" class="form-select mb-3 @error('aduan_kod') is-invalid @enderror" id="aduan_kod" name="aduan_kod"  value="{{$aduan->aduan_kod}}"/>
             </div>
           </div>
+
+          @error('aduan_kod')
+          <div class="alert alert-danger">Sila isi semua maklumat terperinci</div>
+          @enderror
+                              
 
           <div class="col-md-6">
             <div class="mb-3">
               <label for="aduan_detail" class="form-label">Kategori</label>
-              <input type="text" class="form-control" id="aduan_detail" name="aduan_detail" value="{{$aduan->report_detail}}"/>
+              <input type="text" class="form-select mb-3 @error('aduan_detail') is-invalid @enderror" id="aduan_detail" name="aduan_detail" value="{{$aduan->report_detail}}"/>
             </div>
           </div>
         </div>
+
+        @error('aduan_detail')
+          <div class="alert alert-danger">Sila isi semua maklumat terperinci</div>
+          @enderror
+                              
 
       <!-- Card footer -->
       <div class="card-footer">

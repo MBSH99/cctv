@@ -27,6 +27,9 @@ Auth::routes();
         Route::get('/kategori_1/kategori_aduan', function () {return view('/kategori_1/kategori_aduan');});
         Route::get('/kategori_3/pengguna', function () {return view('/kategori_3/pengguna');});
         Route::get('/kategori_2/lokasi', function () {return view('/kategori_2/lokasi');});
+        Route::get('/kemaskini/Kemaskini', function () {return view('/kemaskini/Kemaskini');});
+        Route::get('/carian/mengikut_kategori', function () {return view('/carian/mengikut_kategori');});
+        Route::get('/carian/mengikut_tarikh', function () {return view('/carian/mengikut_tarikh');});
         Route::get('/laporan/keseluruhan', function () {return view('/laporan/keseluruhan');});
         Route::get('/laporan/tarikh&daerah', function () {return view('/laporan/tarikh&daerah');});
         Route::get('/laporan/belum_diberi_maklumbalas', function () {return view('/laporan/belum_diberi_maklumbalas');});
@@ -51,7 +54,6 @@ Auth::routes();
         Route::get('/laporan/belum_diberi_maklumbalas', [App\Http\Controllers\ReportController::class, 'seeReport']);
         Route::post('/laporan/tarikh&daerah',[App\Http\Controllers\ReportController::class, 'lihatReport']);
         Route::get('/laporan/kes_selesai', [App\Http\Controllers\ReportController::class, 'seenReport']);
-
 
 
         //ROUTE UNTUK DELETE DATA DARI DATABASE

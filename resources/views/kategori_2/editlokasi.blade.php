@@ -17,17 +17,27 @@
           <div class="col-md-6">
             <div class="mb-3">
               <label for="lokasi_kod" class="form-label">Kod</label>
-              <input type="text" class="form-control" id="lokasi_kod" name="lokasi_kod" value="{{$lokasi->lokasi_kod}}"/>
+              <input type="text" class="form-select mb-3 @error('lokasi_kod') is-invalid @enderror" id="lokasi_kod" name="lokasi_kod" value="{{$lokasi->lokasi_kod}}"/>
             </div>
           </div>
+
+          @error('lokasi_kod')
+          <div class="alert alert-danger">Sila isi semua maklumat terperinci</div>
+          @enderror
+                              
 
           <div class="col-md-6">
             <div class="mb-3">
               <label for="lokasi_detail" class="form-label">Keterangan</label>
-              <input type="text" class="form-control" id="lokasi_detail" name="lokasi_detail" value="{{$lokasi->lokasi_detail}}"/>
+              <input type="text" class="form-select mb-3 @error('lokasi_detail') is-invalid @enderror" id="lokasi_detail" name="lokasi_detail" value="{{$lokasi->lokasi_detail}}"/>
             </div>
           </div>
         </div>
+
+        @error('lokasi_detail')
+          <div class="alert alert-danger">Sila isi semua maklumat terperinci</div>
+          @enderror
+                              
 
       <!-- Card footer -->
       <div class="card-footer">

@@ -9,6 +9,12 @@
         </div>
         @endif
 
+@if(\Session('failed'))
+        <div class="alert alert-primary" role="alert">
+        {{session('failed')}}
+        </div>
+        @endif
+
 <div class="container mt-5">
  
   <div class="card text-bg-light bg-gradient">
@@ -25,22 +31,32 @@
           <div class="col-md-6 mb-4 mb-md-0">
             <div class="mb-3">
               <label for="date" class="form-label">Tarikh Kejadian</label>
-              <input type="date" id="report_tarikh" name="report_tarikh" class="form-control"/>
+              <input type="date" id="report_tarikh" name="report_tarikh" class="form-control @error('report_tarikh') is-invalid @enderror">
             </div>
           </div>
+
+          @error('report_tarikh')
+          <div class="alert alert-danger">Sila isi semua maklumat terperinci</div>
+          @enderror
+                              
 
           <div class="col-md-6 mb-4 mb-md-0">
             <div class="mb-3">
               <label for="time" class="form-label">Waktu Kejadian</label>
-              <input type="time" id="report_masa" name="report_masa" class="form-control" />
+              <input type="time" id="report_masa" name="report_masa" class="form-control @error('report_masa') is-invalid @enderror">
             </div>
           </div>
         </div>
 
+        @error('report_masa')
+          <div class="alert alert-danger">Sila isi semua maklumat terperinci</div>
+          @enderror
+                              
+
         <div class="row">
           <div class="col-md-6">
             <label for="report_lokasi" class="form-label">No CCTV / Lokasi</label>
-            <select id="report_lokasi" name="report_lokasi" class="form-select mb-3" aria-label="Default select example">
+            <select id="report_lokasi" name="report_lokasi" class="form-select mb-3 @error('report_lokasi') is-invalid @enderror" aria-label="Default select example">
               <option>Sila Pilih</option>
                @foreach($data as $lokasi)
               <option value="<?php echo $lokasi->lokasi_detail; ?>"> <?php echo $lokasi->lokasi_detail; ?>  </option>
@@ -49,9 +65,14 @@
             </select>
           </div>
 
+          @error('report_lokasi')
+          <div class="alert alert-danger">Sila isi semua maklumat terperinci</div>
+          @enderror
+                              
+
           <div class="col-md-6">
             <label for="report_daerah" class="form-label">Daerah</label>
-            <select id="report_daerah" name="report_daerah" class="form-select mb-3" aria-label="Default select example">
+            <select id="report_daerah" name="report_daerah" class="form-select mb-3 @error('report_daerah') is-invalid @enderror" aria-label="Default select example">
             <option>Sila Pilih</option>
             <option value="SPU">SPU/SEBERANG PERAI UTARA</option>
             <option value="SPT">SPT/SEBERANG PERAI TENGAH</option>
@@ -61,10 +82,14 @@
           </div>
         </div>
 
+        @error('report_daerah')
+          <div class="alert alert-danger">Sila isi semua maklumat terperinci</div>
+          @enderror        
+
         <div class="row">
           <div class="col-md-6">
             <label for="report_kaduan" class="form-label">Kategori Aduan</label>
-            <select id="report_kaduan" name="report_kaduan" class="form-select mb-3" aria-label="Default select example">
+            <select id="report_kaduan" name="report_kaduan" class="form-select mb-3 @error('report_kaduan') is-invalid @enderror" aria-label="Default select example">
             <option>Sila Pilih</option>
             @foreach($data1 as $aduan)
             <option value="<?php echo $aduan->aduan_detail; ?>"> <?php echo $aduan->aduan_detail; ?>  </option>
@@ -73,9 +98,13 @@
             </select>
           </div>
 
+          @error('report_kaduan')
+          <div class="alert alert-danger">Sila isi semua maklumat terperinci</div>
+          @enderror
+
           <div class="col-md-6">
             <label for="report_saduan" class="form-label">Status Aduan</label>
-            <select id="report_saduan" name="report_saduan" class="form-select mb-3" aria-label="Default select example">
+            <select id="report_saduan" name="report_saduan" class="form-select mb-3 @error('report_saduan') is-invalid @enderror" aria-label="Default select example">
               <option>Sila Pilih</option>
               <option value="TINDAKAN JABATAN">TINDAKAN JABATAN</option>
               <option value="SELESAI">SELESAI</option>
@@ -83,10 +112,14 @@
           </div>
         </div>
 
+        @error('report_saduan')
+          <div class="alert alert-danger">Sila isi semua maklumat terperinci</div>
+          @enderror        
+
         <div class="row">
           <div class="col-md-6">
             <label for="report_jabatan" class="form-label">Jabatan</label>
-            <select id="report_jabatan" name="report_jabatan" class="form-select mb-3" aria-label="Default select example">
+            <select id="report_jabatan" name="report_jabatan" class="form-select mb-3 @error('report_jabatan') is-invalid @enderror" aria-label="Default select example">
             <option>Sila Pilih</option>
             <option value="101/KHIDMAT PENGURUSAN">101/KHIDMAT PENGURUSAN</option>
             <option value="102/UNDANG-UNDANG">102/UNDANG-UNDANG</option>
@@ -115,29 +148,45 @@
             </select>
           </div>
 
+          @error('report_jabatan')
+          <div class="alert alert-danger">Sila isi semua maklumat terperinci</div>
+          @enderror    
+
           <div class="col-md-6">
             <label for="report_masalapor" class="form-label">Masa Di Lapor</label>
-            <input type="time" id="report_masalapor" name="report_masalapor" class="form-control"/>
+            <input type="time" class="form-control @error('report_masalapor') is-invalid @enderror" id="report_masalapor" name="report_masalapor" >
           </div>
         </div>
+
+        @error('report_masalapor')
+          <div class="alert alert-danger">Sila isi semua maklumat terperinci</div>
+          @enderror         
 
         <div class="row">
           <div class="mb-3">
             <label for="report_laporan" class="form-label">Laporan Kejadian</label>
-             <input type="text" class="form-control" id="report_laporan" name="report_laporan">
+             <input type="text" class="form-control  @error('report_laporan') is-invalid @enderror" id="report_laporan" name="report_laporan">
             </div>
         </div>
+
+        @error('report_laporan')
+          <div class="alert alert-danger">Sila isi semua maklumat terperinci</div>
+          @enderror          
 
         <div class="row">
           <div class="mb-3">
             <label for="report_image" class="form-label">Lampiran</label>
-             <input type="file" class="form-control" id="report_image" name="report_image" onchange="preview()">
+             <input type="file" class="form-control @error('report_image') is-invalid @enderror" id="report_image" name="report_image" onchange="preview()">
              <br>
              <br>
             <img id="frame" src="" class="rounded mx-auto d-block" />
           </div>
         </div>
         <br>
+
+        @error('report_image')
+          <div class="alert alert-danger">Sila isi semua maklumat terperinci</div>
+          @enderror
 
         <div class="row">
           <div class="mb-3">

@@ -18,7 +18,7 @@
   <div class="card shadow">
     <div class="card-header">
       <h2>SENARAI LAPORAN</h2>
-      
+      <h4>Koleksi Data Pada Tarikh ({{$dateFrom}})</h4>
       <table class="table table-hover" style="text-align:center" >
       <thread>
         <tr>

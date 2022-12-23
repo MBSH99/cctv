@@ -14,6 +14,5 @@ class Lokasi extends Model
         'lokasi_kod',
         'lokasi_detail',
         'lokasi_status',
-        
     ];
 }

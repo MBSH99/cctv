@@ -2,16 +2,16 @@
 @section('title','CCTV')
 
 @section('content')
-
-@if(\Session('success'))
-        <div class="alert alert-primary" role="alert">
-        {{session('success')}}
+@if(\Session('failed'))
+      <div>
+        <div class="alert alert-danger" role="alert">
+        {{session('failed')}}
         </div>
+      </div>
         @endif
 
         <div class="container mt-5">
   <div class="card text-bg-light bg-gradient ">
-    <form>
       <!-- Card header -->
       <div class="card-header">
         <h4 class="fw-bold">Kemaskini</h4>
@@ -33,8 +33,8 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
   </div>
-</form>
   </div>
+</form>
 </div>
 <br><br><br>
 <br><br><br>

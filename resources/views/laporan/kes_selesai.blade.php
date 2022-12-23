@@ -32,19 +32,19 @@
         @endforeach
       </tbody>
     </table>
-    </div>
-  </div>
+    </div>  
+    <div class="card-footer">
+    <button class="btn btn-primary"  onclick="window.print()">CETAK</button>
 </div>
-<div class="card-footer">
-        <button type="submit" class="btn btn-primary">CETAK</button>
 </div>
+</div>
+<script>
+  $('.print-window').click(function() {
+    window.print();
+});
 
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
+</script>
+
 <br><br><br>
 <br><br><br>
 <br><br><br>

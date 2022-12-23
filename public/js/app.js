@@ -5323,23 +5323,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js");
 
-Vue.component('example-component', __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/ExampleComponent.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())));
-var app = new Vue({
-  el: '#app',
-  router: router,
-  data: {
-    search: ''
-  },
-  methods: {
-    searchit: _.debounce(function () {
-      Fire.$emit('searching');
-    }, 1000),
-    printme: function printme() {
-      window.print();
-    }
-  }
-});
-
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

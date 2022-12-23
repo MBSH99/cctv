@@ -2,6 +2,14 @@
 @section('title','CCTV')
 
 @section('content')
+@if(\Session('failed'))
+      <div>
+        <div class="alert alert-danger" role="alert">
+        {{session('failed')}}
+        </div>
+      </div>
+        @endif
+        
 <div class="container mt-5">
   <div class="card text-bg-light bg-gradient">
       <!-- Card header -->

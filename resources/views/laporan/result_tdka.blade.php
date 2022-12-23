@@ -10,6 +10,7 @@
 
     <div class="card-header">
       <h2>SENARAI LAPORAN MENGIKUT KATEGORI DAN DAERAH</h2>
+      <h5>Koleksi Data Dari Tarikh ({{$dateFrom}}) Sehingga ({{$dateTo}}) Dalam Kategori {{$report_kaduan}} Di Dalam Daerah {{$report_daerah}}</h5>
       <table class="table table-hover" style="text-align:center" >
       <thread>
         <tr>
